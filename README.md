@@ -7,7 +7,7 @@ All around the world user groups and communities want to learn about Azure and C
 You will find included in this repository all materials use during the demo so you can try it at home.
 
 ## Who is [#msdevmtl](https://www.meetup.com/fr-FR/msdevmtl/?chapter_analytics_code=UA-24676541-1)?
-<img align="left" src="https://pbs.twimg.com/profile_images/495548465250721792/f_TgS2R_.png" width="250">[#msdevmtl](https://www.meetup.com/fr-FR/msdevmtl/?chapter_analytics_code=UA-24676541-1)? is a Microsoft users group based in Montréal.  Please visit our website and find more about us and our incoming [meetup](https://www.meetup.com/fr-FR/msdevmtl/?chapter_analytics_code=UA-24676541-1).
+<img align="left" src="https://pbs.twimg.com/profile_images/495548465250721792/f_TgS2R_.png" width="250">[#msdevmtl](https://www.meetup.com/fr-FR/msdevmtl/?chapter_analytics_code=UA-24676541-1)? is a Microsoft user group based in Montréal.  Please visit our website and find out more about us and our incoming [meetup](https://www.meetup.com/fr-FR/msdevmtl/?chapter_analytics_code=UA-24676541-1).
 
 ## Technology Stack for the Global Azure Bootcamp 2017
 
