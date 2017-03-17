@@ -11,15 +11,14 @@ You will find included in this repository all materials use during the demo so y
 
 ## Technology Stack for the Global Azure Bootcamp 2017
 
-* ASP.NET 5.0 ( MVC 6)
-* HTML 5
-* Azure Web APP
-* Azure ARM template
-* Azure DocumentDB
-* Azure Functions
-* Azure Congitive APIs
-* Azure Application Insights
-* Azure Storage
+* [ASP.NET Core (MVC)](https://www.asp.net/core)
+* [Azure Web APP](https://azure.microsoft.com/en-ca/services/app-service/web/)
+* [Azure Resource Manager](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-overview)
+* [Azure DocumentDB](https://azure.microsoft.com/en-ca/services/documentdb/)
+* [Azure Functions](https://azure.microsoft.com/en-us/services/functions/)
+* [Azure Cognitive APIs](https://azure.microsoft.com/en-ca/services/cognitive-services/)
+* [Azure Application Insights](https://azure.microsoft.com/en-us/services/application-insights/)
+* [Azure Storage](https://azure.microsoft.com/en-ca/services/storage/)
 
 ## How to use it?
 
