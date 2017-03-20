@@ -1,5 +1,5 @@
 ﻿{
-  "projects": [ "WebHost" ],
+  "projects": [ "Step5DocumentDBConsole, WebHost" ],
   "sdk": {
     "version": "1.0.0-preview2-003131"
   }
