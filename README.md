@@ -12,6 +12,7 @@ This group is designed to bring together the Microsoft Windows Azure development
 
 Please visit our website and find out more about us and our incoming [meetup](https://www.meetup.com/fr-FR/msdevmtl/?chapter_analytics_code=UA-24676541-1).
 
+
 ## Technology Stack for the Global Azure Bootcamp 2017
 
 * [ASP.NET Core (MVC)](https://www.asp.net/core)
@@ -34,7 +35,7 @@ Make sure to have your account up and ready before the bootcamp.
 [Create your free Azure account today](https://azure.microsoft.com/en-us/free/)
 
 ### Visual Studio
-To use the demo code, you will require to install the latest Visual studio. Minimum version is Visual Studio 2015 with the update 3. [You can download a free trial of Visual Studio](https://www.visualstudio.com/downloads/)
+To use the demo code, you will require to install the latest Visual studio. The minimum version require to use the demo code is Visual Studio 2015 with the update 3. [You can download a free trial of Visual Studio here](https://www.visualstudio.com/downloads/)
 
 ### Azure SDK
 Make sure you have installed the latest Azure SDK.  
