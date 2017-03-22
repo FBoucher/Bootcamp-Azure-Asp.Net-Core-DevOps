@@ -34,9 +34,9 @@ Make sure to have your account up and ready before the bootcamp.
 [Create your free Azure account today](https://azure.microsoft.com/en-us/free/)
 
 ### Visual Studio
-To use the demo code, you are require to install Microsoft Visual studio. The minimum version of Visual Studio to use with the demo code is 2015 with the update 3. [You can download a free trial of Visual Studio here](https://www.visualstudio.com/downloads/)
+To use the demo code, you are require to install Microsoft Visual studio. The minimum version of Visual Studio to use with the demo code is 2015 with the update 3. [You can download a free trial of Visual Studio here](https://www.visualstudio.com/en-us/news/releasenotes/vs2015-update3-vs)
 
-### Azure SDK
-Make sure you have installed the latest Azure SDK.  
+### Azure SDK - 2.9.6
+Make sure you have installed the Microsoft Azure SDK for .NET - 2.9.6
 
-[https://azure.microsoft.com/en-ca/downloads/](https://azure.microsoft.com/en-ca/downloads/)
+[https://www.microsoft.com/en-us/download/details.aspx?id=54289](https://www.microsoft.com/en-us/download/details.aspx?id=54289)
