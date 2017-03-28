@@ -1,28 +1,15 @@
 public static async Task Run(HttpRequestMessage req, TraceWriter log)
-
 {
-
     log.Info("Function is starting...");
 
-
-
     //GET THE STRING FROM THE STORAGE QUEUE*******************
-
     string comment = "Bonjour le monde!";    //HARDCODED RIGHT NOW
 
-
     string BaseUrl = "https://westus.api.cognitive.microsoft.com/";
-
     string AccountKey = ConfigurationManager.AppSettings["textAnalysisApiKey"];
 
-
-
     var _language = await DetectLanguage(comment, BaseUrl, AccountKey);
-
     log.Info("Language: " + _language);
 
-
-
     log.Info("Function is ending...");
-
 }
