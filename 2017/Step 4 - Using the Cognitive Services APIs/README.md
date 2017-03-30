@@ -2,7 +2,7 @@
 Analyze the sentiment of the text entered by the user to see if it’s positive or negative by sending it to a REST API that will analyze it and also detect the language used by the user.  For doing that, we'll modify the function already created by calling the Text Analytics API of the Microsoft Cognitive Services.
 We'll be making two API calls.  The first one will return the language of the sentence entered by the user and the second call will return the sentiment of the sentence as a number between 0 and 1 (0 meaning negatitve and 1 meaning positive).
 
-Have the audience type what they feel about the local team making it to this year's finals  :-)
+Have the audience type what they feel about the local team making it to this year's finals.  This should be fun  :-)
 
 # Reference
 https://www.microsoft.com/cognitive-services
@@ -17,6 +17,7 @@ In the Azure portal, click on new and search for "Cognitive". Create a Cognitive
 Grab the key and store it in the Function's App Settings.
 
 ## Add the required usings
+Ask the attendees to open the file 1.txt in the Code Snippets folder.  Copy an paste the code in the function editor.
 
 ## Add the detect language code
 
