@@ -1,0 +1,154 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "appName": {
+            "maxLength": 7,
+            "type": "string",
+            "metadata": {
+                "description": "The base name of the solution. Up to 7 characters."
+            }
+        }
+    },
+    "variables": {
+        "uniqueString": "[uniqueString(subscription().id, resourceGroup().id)]",
+
+        "defaultResourceLocation": "[resourceGroup().location]",
+
+        "lowerCaseAppName": "[toLower( concat(parameters('appName'), variables('uniqueString')) )]",
+
+        "appServicePlan": {
+            "apiVersion": "2015-08-01",
+            "name": "[concat(variables('lowerCaseAppName'),'-sp')]",
+            "location": "[variables('defaultResourceLocation')]",
+            "sku": {
+                "name": "F1",
+                "capacity": 1
+            }
+        },
+
+        "webApp": {
+            "apiVersion": "2015-08-01",
+            "name": "[concat(variables('lowerCaseAppName'),'-webapp')]",
+            "location": "[variables('defaultResourceLocation')]",
+            "kind": "app",
+            "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('appServicePlan').name)]"
+        },
+
+        "storage": {
+            "apiVersion": "2016-01-01",
+            "name": "[concat(variables('lowerCaseAppName'),'stor')]",
+            "location": "[variables('defaultResourceLocation')]",
+            "kind": "Storage",
+            "sku": {
+                "Name": "Standard_LRS",
+                "tier": "Standard"
+            }
+        },
+
+        "documentDB": {
+            "apiVersion": "2015-04-08",
+            "name": "[concat(variables('lowerCaseAppName'),'-docdb')]",
+            "location": "[variables('defaultResourceLocation')]",
+            "kind": "GlobalDocumentDB",
+            "databaseAccountOfferType": "Standard",
+            "consistencyPolicy": {
+                "defaultConsistencyLevel": "Session"
+            }
+        },
+
+        "appInsights": {
+            "apiVersion": "2014-04-01",
+            "name": "[concat(variables('lowerCaseAppName'),'-appinsights')]",
+            "location": "East US",
+            "kind": "web",
+            "LinkedApplicationId": "[resourceId('Microsoft.Web/sites', variables('webApp').name)]"
+
+        }
+    },
+    "resources": [
+        {
+            "comments": "Storage Account",
+            "type": "Microsoft.Storage/storageAccounts",
+            "name": "[variables('storage').name]",
+            "apiVersion": "[variables('storage').apiVersion]",
+            "location": "[variables('storage').location]",
+
+            "sku": "[variables('storage').sku]",
+            "kind": "[variables('storage').kind]",
+            "tags": {
+                "syncAssets": "true"
+            },
+            "properties": {}
+        },
+        {
+            "comments": "DocumentDB",
+            "name": "[variables('documentDB').name]",
+            "type": "Microsoft.DocumentDB/databaseAccounts",
+            "apiVersion": "[variables('documentDB').apiVersion]",
+            "location": "[variables('documentDB').location]",
+            "kind": "[variables('documentDB').kind]",
+            "tags": {},
+            "properties": {
+                "databaseAccountOfferType": "[variables('documentDB').databaseAccountOfferType]",
+                "consistencyPolicy": "[variables('documentDB').consistencyPolicy]"
+            }
+        },
+        {
+            "comments": "Application Insights",
+            "name": "[variables('appInsights').name]",
+            "type": "Microsoft.Insights/components",
+            "apiVersion": "[variables('appInsights').apiVersion]",
+            "location": "[variables('appInsights').location]",
+            "kind": "[variables('appInsights').kind]",
+            "tags": {},
+            "properties": {
+                "ApplicationId": "[variables('appInsights').linkedApplicationId]"
+            },
+            "dependsOn": [
+                "[variables('appInsights').linkedApplicationId]"
+            ]
+        },
+        {
+            "comments": "AppService Plan",
+            "type": "Microsoft.Web/serverfarms",
+            "name": "[variables('appServicePlan').name]",
+            "apiVersion": "[variables('appServicePlan').apiVersion]",
+            "location": "[variables('appServicePlan').location]",
+            "sku": "[variables('appServicePlan').sku]",
+            "tags": {},
+            "properties": {}
+        },
+        {
+            "comments": "WebApp",
+            "type": "Microsoft.Web/sites",
+            "name": "[variables('webApp').name]",
+            "apiVersion": "[variables('webApp').apiVersion]",
+            "location": "[variables('webApp').location]",
+            "kind": "[variables('webApp').kind]",
+            "tags": {},
+            "properties": {
+                "serverFarmId": "[variables('webApp').serverFarmId]"
+            },
+            "dependsOn": [
+                "[variables('webApp').serverFarmId]"
+            ],
+            "resources": [
+                {
+                    "type": "config",
+                    "name": "appsettings",
+                    "apiVersion": "[variables('webApp').apiVersion]",
+                    "tags": {
+                        "displayName": "appsettings"
+                    },
+                    "properties": {
+                        "appInsightInstrumentationKey": "[reference(resourceId('Microsoft.Insights/components', variables('appInsights').name), variables('appInsights').apiVersion).InstrumentationKey]"
+                    },
+                    "dependsOn": [
+                        "[resourceId('Microsoft.Web/sites', variables('webApp').name)]"
+                    ]
+                }
+            ]
+        }
+    ]
+}
