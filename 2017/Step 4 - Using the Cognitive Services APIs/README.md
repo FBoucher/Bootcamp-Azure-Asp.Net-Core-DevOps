@@ -11,7 +11,6 @@ Head to https://www.microsoft.com/cognitive-services/en-us/text-analytics-api
 Use the demo in the middle of the page to demonstrate the use of the API.  Make sure you show the JSON being returned.
 
 # Let's code!
-## Configuration
 ## Add the Text Analytics API
 In the Azure portal, click on new and search for "Cognitive". 
 
@@ -23,10 +22,10 @@ Create a Cognitive Service APIs by making sure to select the Text Analytics API 
 
 Copy the API key.
 
-## Add the API key to the Function's App Settings
 ![alt text][img5]
 
-Return to the Fucntion that was created in the previous step.  Click on *Function app Settings* in the lower left corner.
+## Add the API key to the Function's App Settings
+Return to the function that was created in the previous step.  Click on *Function app Settings* in the lower left corner.
 
 ![alt text][img3]
 
@@ -34,7 +33,6 @@ Create a new App Settings key called *textAnalysisApiKey* and copy the Api key. 
 
 ![alt text][img4]
 
-## Edit the function
 ## Add the required usings
 Ask the attendees to open the file 1.txt in the Code Snippets folder.  Copy an paste the code in the function editor.
 
