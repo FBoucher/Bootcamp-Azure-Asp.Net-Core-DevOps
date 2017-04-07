@@ -26,5 +26,6 @@ Ask the attendees to open the file 3.txt in the Code Snippets folder.  Add the D
 ## Add the detect sentiment code
 Ask the attendees to open the file 4.txt in the Code Snippets folder.  Add the DetectSentiment() function below the DetectLanguage() function.
 In the Run task, add a call to the DectectSentiment() function below the call to the DetectLanguage() function.
+```
 var _Sentiment = await DetectSentiment(comment, BaseUrl, AccountKey);
-
+```
