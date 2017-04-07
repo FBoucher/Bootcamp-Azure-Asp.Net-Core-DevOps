@@ -20,5 +20,11 @@ Grab the key and store it in the Function's App Settings.
 Ask the attendees to open the file 1.txt in the Code Snippets folder.  Copy an paste the code in the function editor.
 
 ## Add the detect language code
+Ask the attendees to open the file 2.txt in the Code Snippets folder.  Modify the Run task to add code to detect the language that the sentence is written in.
+Ask the attendees to open the file 3.txt in the Code Snippets folder.  Add the DetectLanguage() function below the Run task.
 
 ## Add the detect sentiment code
+Ask the attendees to open the file 4.txt in the Code Snippets folder.  Add the DetectSentiment() function below the DetectLanguage() function.
+In the Run task, add a call to the DectectSentiment() function below the call to the DetectLanguage() function.
+var _Sentiment = await DetectSentiment(comment, BaseUrl, AccountKey);
+
