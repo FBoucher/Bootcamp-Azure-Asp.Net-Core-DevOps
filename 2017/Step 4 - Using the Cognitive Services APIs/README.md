@@ -44,7 +44,8 @@ Ask the attendees to open the file 3.txt in the Code Snippets folder.  Add the D
 Ask the attendees to open the file 4.txt in the Code Snippets folder.  Add the DetectSentiment() function below the DetectLanguage() function.
 In the Run task, add a call to the DectectSentiment() function below the call to the DetectLanguage() function.
 ```
-var _Sentiment = await DetectSentiment(comment, BaseUrl, AccountKey);
+var _sentiment = await DetectSentiment(comment, BaseUrl, AccountKey);
+log.Info("Sentiment: " + _sentiment);
 ```
 
 [img1]: https://raw.githubusercontent.com/alainvezina/GlobalAzureBootcamp/master/2017/Step%204%20-%20Using%20the%20Cognitive%20Services%20APIs/Media/2017-04-07%2013_33_47-New%20-%20Microsoft%20Azure.png "Search for Cognitive"
