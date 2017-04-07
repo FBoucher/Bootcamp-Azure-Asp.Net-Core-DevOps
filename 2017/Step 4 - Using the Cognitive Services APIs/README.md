@@ -20,6 +20,10 @@ Create a Cognitive Service APIs by making sure to select the Text Analytics API 
 
 ![alt text][img2]
 
+Click on Function app Settings in the lower left corner.
+
+![alt text][img3]
+
 Grab the key and store it in the Function's App Settings.
 
 ## Add the required usings
@@ -38,3 +42,4 @@ var _Sentiment = await DetectSentiment(comment, BaseUrl, AccountKey);
 
 [img1]: https://raw.githubusercontent.com/alainvezina/GlobalAzureBootcamp/master/2017/Step%204%20-%20Using%20the%20Cognitive%20Services%20APIs/Media/2017-04-07%2013_33_47-New%20-%20Microsoft%20Azure.png "Search for Cognitive"
 [img2]: https://github.com/alainvezina/GlobalAzureBootcamp/blob/master/2017/Step%204%20-%20Using%20the%20Cognitive%20Services%20APIs/Media/2017-04-07%2013_35_29-Create%20-%20Microsoft%20Azure.png?raw=true "Specify Text Analytics"
+[img3]: https://github.com/alainvezina/GlobalAzureBootcamp/blob/master/2017/Step%204%20-%20Using%20the%20Cognitive%20Services%20APIs/Media/2017-04-07%2013_38_33-testCognitiveApi%20-%20Microsoft%20Azure.png?raw=true "Click on Function app Settings"
