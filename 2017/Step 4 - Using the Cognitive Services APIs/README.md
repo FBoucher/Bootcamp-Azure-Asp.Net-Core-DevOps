@@ -7,8 +7,9 @@ Have the audience type what they feel about the local team making it to this yea
 # Reference
 https://www.microsoft.com/cognitive-services
 
+# Some background
 Head to https://www.microsoft.com/cognitive-services/en-us/text-analytics-api
-Use the demo in the middle of the page to demonstrate the use of the API.  Make sure you show the JSON being returned.
+Use the demo in the middle of the page to demonstrate the use of the API.  Make sure you show the JSON being returned.  This is a great way for the attendees to visualize what will be call and what will be returned by the API.
 
 # Let's code!
 ## Add the Text Analytics API
@@ -47,6 +48,8 @@ In the Run task, add a call to the DectectSentiment() function below the call to
 var _sentiment = await DetectSentiment(comment, BaseUrl, AccountKey);
 log.Info("Sentiment: " + _sentiment);
 ```
+#End
+
 
 [img1]: https://raw.githubusercontent.com/alainvezina/GlobalAzureBootcamp/master/2017/Step%204%20-%20Using%20the%20Cognitive%20Services%20APIs/Media/2017-04-07%2013_33_47-New%20-%20Microsoft%20Azure.png "Search for Cognitive"
 [img2]: https://github.com/alainvezina/GlobalAzureBootcamp/blob/master/2017/Step%204%20-%20Using%20the%20Cognitive%20Services%20APIs/Media/2017-04-07%2013_35_29-Create%20-%20Microsoft%20Azure.png?raw=true "Specify Text Analytics"
