@@ -12,7 +12,12 @@ Use the demo in the middle of the page to demonstrate the use of the API.  Make 
 
 # Let's code!
 ## Add the Text Analytics API
-In the Azure portal, click on new and search for "Cognitive". Create a Cognitive Service APIs by making sure to select the Text Analytics API in the API type dropdown.
+In the Azure portal, click on new and search for "Cognitive". 
+
+![alt text][img1]
+
+
+Create a Cognitive Service APIs by making sure to select the Text Analytics API in the API type dropdown.
 
 Grab the key and store it in the Function's App Settings.
 
@@ -29,3 +34,5 @@ In the Run task, add a call to the DectectSentiment() function below the call to
 ```
 var _Sentiment = await DetectSentiment(comment, BaseUrl, AccountKey);
 ```
+
+[img1]: https://raw.githubusercontent.com/alainvezina/GlobalAzureBootcamp/master/2017/Step%204%20-%20Using%20the%20Cognitive%20Services%20APIs/Media/2017-04-07%2013_33_47-New%20-%20Microsoft%20Azure.png "Search for Cognitive"
