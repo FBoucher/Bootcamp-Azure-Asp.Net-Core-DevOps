@@ -17,27 +17,61 @@
 
         "lowerCaseAppName": "[toLower( concat(parameters('appName'), variables('uniqueString')) )]",
 
-        "appServicePlan": {
-            "apiVersion": "2015-08-01",
-            "name": "[concat(variables('lowerCaseAppName'),'-sp')]",
+        "appServicePlanWeb": {
+            "apiVersion": "2016-09-01",
+            "name": "[concat(variables('lowerCaseAppName'),'-sp-web')]",
             "location": "[variables('defaultResourceLocation')]",
             "sku": {
                 "name": "F1",
+                "tier": "Free",
                 "capacity": 1
             }
         },
+
+        "appServicePlanFunction": {
+            "apiVersion": "2016-09-01",
+            "name": "[concat(variables('lowerCaseAppName'),'-sp-function')]",
+            "location": "[variables('defaultResourceLocation')]",
+            "sku": {
+                "name": "Y1",
+                "tier": "Dynamic",
+                "size": "Y1",
+                "family": "Y",
+                "capacity": 0
+            }
+        },
+
 
         "webApp": {
             "apiVersion": "2015-08-01",
             "name": "[concat(variables('lowerCaseAppName'),'-webapp')]",
             "location": "[variables('defaultResourceLocation')]",
             "kind": "app",
-            "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('appServicePlan').name)]"
+            "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('appServicePlanWeb').name)]"
+        },
+
+        "functionApp": {
+            "apiVersion": "2015-08-01",
+            "name": "[concat(variables('lowerCaseAppName'),'-functionapp')]",
+            "location": "[variables('defaultResourceLocation')]",
+            "kind": "functionapp",
+            "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('appServicePlanFunction').name)]"
         },
 
         "storage": {
             "apiVersion": "2016-01-01",
             "name": "[concat(variables('lowerCaseAppName'),'stor')]",
+            "location": "[variables('defaultResourceLocation')]",
+            "kind": "Storage",
+            "sku": {
+                "Name": "Standard_LRS",
+                "tier": "Standard"
+            }
+        },
+
+        "storageFunction": {
+            "apiVersion": "2016-01-01",
+            "name": "[concat(variables('lowerCaseAppName'),'func')]",
             "location": "[variables('defaultResourceLocation')]",
             "kind": "Storage",
             "sku": {
@@ -73,11 +107,23 @@
             "name": "[variables('storage').name]",
             "apiVersion": "[variables('storage').apiVersion]",
             "location": "[variables('storage').location]",
-
             "sku": "[variables('storage').sku]",
             "kind": "[variables('storage').kind]",
             "tags": {
                 "syncAssets": "true"
+            },
+            "properties": {}
+        },
+        {
+            "comments": "FunctionApp Storage Account",
+            "type": "Microsoft.Storage/storageAccounts",
+            "name": "[variables('storageFunction').name]",
+            "apiVersion": "[variables('storageFunction').apiVersion]",
+            "location": "[variables('storageFunction').location]",
+
+            "sku": "[variables('storageFunction').sku]",
+            "kind": "[variables('storageFunction').kind]",
+            "tags": {
             },
             "properties": {}
         },
@@ -110,12 +156,25 @@
             ]
         },
         {
-            "comments": "AppService Plan",
+            "comments": "AppService Plan - Web",
             "type": "Microsoft.Web/serverfarms",
-            "name": "[variables('appServicePlan').name]",
-            "apiVersion": "[variables('appServicePlan').apiVersion]",
-            "location": "[variables('appServicePlan').location]",
-            "sku": "[variables('appServicePlan').sku]",
+            "name": "[variables('appServicePlanWeb').name]",
+            "apiVersion": "[variables('appServicePlanWeb').apiVersion]",
+            "location": "[variables('appServicePlanWeb').location]",
+            "sku": "[variables('appServicePlanWeb').sku]",
+            "tags": {},
+            "properties": {},
+            "dependsOn": [
+                "[variables('functionApp').serverFarmId]"
+            ]
+        },
+        {
+            "comments": "AppService Plan - Function",
+            "type": "Microsoft.Web/serverfarms",
+            "name": "[variables('appServicePlanFunction').name]",
+            "apiVersion": "[variables('appServicePlanFunction').apiVersion]",
+            "location": "[variables('appServicePlanFunction').location]",
+            "sku": "[variables('appServicePlanFunction').sku]",
             "tags": {},
             "properties": {}
         },
@@ -149,6 +208,50 @@
                     ]
                 }
             ]
+        },
+        {
+            "comments": "FunctionApp",
+            "type": "Microsoft.Web/sites",
+            "name": "[variables('functionApp').name]",
+            "apiVersion": "[variables('functionApp').apiVersion]",
+            "location": "[variables('functionApp').location]",
+            "kind": "[variables('functionApp').kind]",
+            "tags": {},
+            "properties": {
+                "siteConfig": {
+                    "appSettings": [
+                        {
+                            "name": "AzureWebJobsDashboard",
+                            "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageFunction').name, ';AccountKey=', listKeys(resourceId('Microsoft.Storage/storageAccounts', variables('storageFunction').name),'2016-01-01').keys[0].value)]"
+                        },
+                        {
+                            "name": "AzureWebJobsStorage",
+                            "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageFunction').name, ';AccountKey=', listKeys(resourceId('Microsoft.Storage/storageAccounts', variables('storageFunction').name),'2016-01-01').keys[0].value)]"
+                        },
+                        {
+                            "name": "WEBSITE_CONTENTAZUREFILECONNECTIONSTRING",
+                            "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageFunction').name, ';AccountKey=', listKeys(resourceId('Microsoft.Storage/storageAccounts', variables('storageFunction').name),'2016-01-01').keys[0].value)]"
+                        },
+                        {
+                            "name": "WEBSITE_CONTENTSHARE",
+                            "value": "[variables('functionApp').name]"
+                        },
+                        {
+                            "name": "FUNCTIONS_EXTENSION_VERSION",
+                            "value": "~1"
+                        },
+                        {
+                            "name": "WEBSITE_NODE_DEFAULT_VERSION",
+                            "value": "6.5.0"
+                        }
+                    ]
+                }
+            },
+            "dependsOn": [
+                "[variables('functionApp').serverFarmId]"
+            ]
+
+
         }
     ]
 }
