@@ -19,6 +19,16 @@ try {
     [Microsoft.Azure.Common.Authentication.AzureSession]::ClientFactory.AddUserAgent("VSAzureTools-$UI$($host.name)".replace(' ','_'), '2.9.6')
 } catch { }
 
+$ErrorActionPreference = 'Continue'
+try{
+    $context = Get-AzureRmContext
+    if(-not $context.Environment.Name) {
+        throw 'No current context'
+    }
+}
+catch {
+    Login-AzureRmAccount
+}
 $ErrorActionPreference = 'Stop'
 Set-StrictMode -Version 3
 

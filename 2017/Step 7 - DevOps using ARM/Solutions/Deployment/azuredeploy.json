@@ -18,7 +18,6 @@
         "lowerCaseAppName": "[toLower( concat(parameters('appName'), variables('uniqueString')) )]",
 
         "appServicePlanWeb": {
-            "apiVersion": "2016-09-01",
             "name": "[concat(variables('lowerCaseAppName'),'-sp-web')]",
             "location": "[variables('defaultResourceLocation')]",
             "sku": {
@@ -29,7 +28,6 @@
         },
 
         "appServicePlanFunction": {
-            "apiVersion": "2016-09-01",
             "name": "[concat(variables('lowerCaseAppName'),'-sp-function')]",
             "location": "[variables('defaultResourceLocation')]",
             "sku": {
@@ -43,7 +41,6 @@
 
 
         "webApp": {
-            "apiVersion": "2015-08-01",
             "name": "[concat(variables('lowerCaseAppName'),'-webapp')]",
             "location": "[variables('defaultResourceLocation')]",
             "kind": "app",
@@ -51,7 +48,6 @@
         },
 
         "functionApp": {
-            "apiVersion": "2015-08-01",
             "name": "[concat(variables('lowerCaseAppName'),'-functionapp')]",
             "location": "[variables('defaultResourceLocation')]",
             "kind": "functionapp",
@@ -59,29 +55,32 @@
         },
 
         "storage": {
-            "apiVersion": "2016-01-01",
-            "name": "[concat(variables('lowerCaseAppName'),'stor')]",
-            "location": "[variables('defaultResourceLocation')]",
-            "kind": "Storage",
-            "sku": {
-                "Name": "Standard_LRS",
-                "tier": "Standard"
-            }
-        },
-
-        "storageFunction": {
-            "apiVersion": "2016-01-01",
-            "name": "[concat(variables('lowerCaseAppName'),'func')]",
-            "location": "[variables('defaultResourceLocation')]",
-            "kind": "Storage",
-            "sku": {
-                "Name": "Standard_LRS",
-                "tier": "Standard"
+            "itemIndexes": [ "general", "function" ],
+            "items": {
+                "general": {
+                    "name": "[concat(variables('lowerCaseAppName'),'stor')]",
+                    "location": "[variables('defaultResourceLocation')]",
+                    "kind": "Storage",
+                    "sku": {
+                        "Name": "Standard_LRS",
+                        "tier": "Standard"
+                    },
+                    "properties": {}
+                },
+                "function": {
+                    "name": "[concat(variables('lowerCaseAppName'),'func')]",
+                    "location": "[variables('defaultResourceLocation')]",
+                    "kind": "Storage",
+                    "sku": {
+                        "Name": "Standard_LRS",
+                        "tier": "Standard"
+                    },
+                    "properties": {}
+                }
             }
         },
 
         "documentDB": {
-            "apiVersion": "2015-04-08",
             "name": "[concat(variables('lowerCaseAppName'),'-docdb')]",
             "location": "[variables('defaultResourceLocation')]",
             "kind": "GlobalDocumentDB",
@@ -92,7 +91,6 @@
         },
 
         "appInsights": {
-            "apiVersion": "2014-04-01",
             "name": "[concat(variables('lowerCaseAppName'),'-appinsights')]",
             "location": "East US",
             "kind": "web",
@@ -102,40 +100,29 @@
     },
     "resources": [
         {
-            "comments": "Storage Account",
+            "comments": "Storage Accounts",
             "type": "Microsoft.Storage/storageAccounts",
-            "name": "[variables('storage').name]",
-            "apiVersion": "[variables('storage').apiVersion]",
-            "location": "[variables('storage').location]",
-            "sku": "[variables('storage').sku]",
-            "kind": "[variables('storage').kind]",
-            "tags": {
-                "syncAssets": "true"
+            "name": "[variables('storage').items[variables('storage').itemIndexes[copyIndex()]].name]",
+            "apiVersion": "2016-01-01",
+            "location": "[variables('storage').items[variables('storage').itemIndexes[copyIndex()]].location]",
+            "copy": {
+                "name": "storageAccounts",
+                "count": "[length(variables('storage').itemIndexes)]"
             },
-            "properties": {}
-        },
-        {
-            "comments": "FunctionApp Storage Account",
-            "type": "Microsoft.Storage/storageAccounts",
-            "name": "[variables('storageFunction').name]",
-            "apiVersion": "[variables('storageFunction').apiVersion]",
-            "location": "[variables('storageFunction').location]",
-
-            "sku": "[variables('storageFunction').sku]",
-            "kind": "[variables('storageFunction').kind]",
-            "tags": {
-            },
-            "properties": {}
+            "sku": "[variables('storage').items[variables('storage').itemIndexes[copyIndex()]].sku]",
+            "kind": "[variables('storage').items[variables('storage').itemIndexes[copyIndex()]].kind]",
+            "tags": {},
+            "properties": "[variables('storage').items[variables('storage').itemIndexes[copyIndex()]].properties]"
         },
         {
             "comments": "DocumentDB",
             "name": "[variables('documentDB').name]",
             "type": "Microsoft.DocumentDB/databaseAccounts",
-            "apiVersion": "[variables('documentDB').apiVersion]",
+            "apiVersion": "2015-04-08",
             "location": "[variables('documentDB').location]",
             "kind": "[variables('documentDB').kind]",
             "tags": {},
-            "properties": {
+            "properties": {                
                 "databaseAccountOfferType": "[variables('documentDB').databaseAccountOfferType]",
                 "consistencyPolicy": "[variables('documentDB').consistencyPolicy]"
             }
@@ -144,7 +131,7 @@
             "comments": "Application Insights",
             "name": "[variables('appInsights').name]",
             "type": "Microsoft.Insights/components",
-            "apiVersion": "[variables('appInsights').apiVersion]",
+            "apiVersion": "2014-04-01",
             "location": "[variables('appInsights').location]",
             "kind": "[variables('appInsights').kind]",
             "tags": {},
@@ -159,7 +146,7 @@
             "comments": "AppService Plan - Web",
             "type": "Microsoft.Web/serverfarms",
             "name": "[variables('appServicePlanWeb').name]",
-            "apiVersion": "[variables('appServicePlanWeb').apiVersion]",
+            "apiVersion": "2016-09-01",
             "location": "[variables('appServicePlanWeb').location]",
             "sku": "[variables('appServicePlanWeb').sku]",
             "tags": {},
@@ -172,7 +159,7 @@
             "comments": "AppService Plan - Function",
             "type": "Microsoft.Web/serverfarms",
             "name": "[variables('appServicePlanFunction').name]",
-            "apiVersion": "[variables('appServicePlanFunction').apiVersion]",
+            "apiVersion": "2016-09-01",
             "location": "[variables('appServicePlanFunction').location]",
             "sku": "[variables('appServicePlanFunction').sku]",
             "tags": {},
@@ -182,7 +169,7 @@
             "comments": "WebApp",
             "type": "Microsoft.Web/sites",
             "name": "[variables('webApp').name]",
-            "apiVersion": "[variables('webApp').apiVersion]",
+            "apiVersion": "2015-08-01",
             "location": "[variables('webApp').location]",
             "kind": "[variables('webApp').kind]",
             "tags": {},
@@ -196,12 +183,9 @@
                 {
                     "type": "config",
                     "name": "appsettings",
-                    "apiVersion": "[variables('webApp').apiVersion]",
-                    "tags": {
-                        "displayName": "appsettings"
-                    },
+                    "apiVersion": "2015-08-01",
                     "properties": {
-                        "appInsightInstrumentationKey": "[reference(resourceId('Microsoft.Insights/components', variables('appInsights').name), variables('appInsights').apiVersion).InstrumentationKey]"
+                        "appInsightInstrumentationKey": "[reference(resourceId('Microsoft.Insights/components', variables('appInsights').name), '2014-04-01').InstrumentationKey]"
                     },
                     "dependsOn": [
                         "[resourceId('Microsoft.Web/sites', variables('webApp').name)]"
@@ -213,7 +197,7 @@
             "comments": "FunctionApp",
             "type": "Microsoft.Web/sites",
             "name": "[variables('functionApp').name]",
-            "apiVersion": "[variables('functionApp').apiVersion]",
+            "apiVersion": "2015-08-01",
             "location": "[variables('functionApp').location]",
             "kind": "[variables('functionApp').kind]",
             "tags": {},
@@ -222,15 +206,15 @@
                     "appSettings": [
                         {
                             "name": "AzureWebJobsDashboard",
-                            "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageFunction').name, ';AccountKey=', listKeys(resourceId('Microsoft.Storage/storageAccounts', variables('storageFunction').name),'2016-01-01').keys[0].value)]"
+                            "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storage').items['function'].name, ';AccountKey=', listKeys(resourceId('Microsoft.Storage/storageAccounts', variables('storage').items['function'].name),'2016-01-01').keys[0].value)]"
                         },
                         {
                             "name": "AzureWebJobsStorage",
-                            "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageFunction').name, ';AccountKey=', listKeys(resourceId('Microsoft.Storage/storageAccounts', variables('storageFunction').name),'2016-01-01').keys[0].value)]"
+                            "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storage').items['function'].name, ';AccountKey=', listKeys(resourceId('Microsoft.Storage/storageAccounts', variables('storage').items['function'].name),'2016-01-01').keys[0].value)]"
                         },
                         {
                             "name": "WEBSITE_CONTENTAZUREFILECONNECTIONSTRING",
-                            "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageFunction').name, ';AccountKey=', listKeys(resourceId('Microsoft.Storage/storageAccounts', variables('storageFunction').name),'2016-01-01').keys[0].value)]"
+                            "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storage').items['function'].name, ';AccountKey=', listKeys(resourceId('Microsoft.Storage/storageAccounts', variables('storage').items['function'].name),'2016-01-01').keys[0].value)]"
                         },
                         {
                             "name": "WEBSITE_CONTENTSHARE",
@@ -248,10 +232,9 @@
                 }
             },
             "dependsOn": [
-                "[variables('functionApp').serverFarmId]"
+                "[variables('functionApp').serverFarmId]",
+                "[resourceId('Microsoft.Storage/storageAccounts', variables('storage').items['function'].name)]"
             ]
-
-
         }
     ]
 }
