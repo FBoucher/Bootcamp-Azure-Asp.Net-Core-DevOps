@@ -50,6 +50,8 @@ Ask the attendees to open the file FunctionSignature.txt in the Code Snippets/Fu
 Ask the attendees to open the file OutputModel.txt in the Code Snippets/Function folder.  Add this at the very and of the main function.
 
 ## Update the AppSettings of the WebApp
+
+### If running locally
 Ask the attendees to copy the file Web.Deployment.config in the Code Snippets/WebApp folder to the root of the WebApp project
 
 * Update the Web.Config to reference that file
@@ -65,6 +67,13 @@ Ask the attendees to copy the file Web.Deployment.config in the Code Snippets/We
   <add key="DocumentDBKey" value="myveryprivatekeygoeshere==" />
 </appSettings>
 ```
+### If running on Azure
+
+Ask the attendees to go the Application Settings of the WebApp which was deployed previously.
+![alt text][img9]
+
+Ask the attendeeds to Update the settings to include the DocumentDB URI and key.
+![alt text][img10]
 
 ## Update the WebApp to add our new view
 
@@ -102,3 +111,6 @@ Load your web app and navigate to the new page to view your sentiment analysis r
 [img6]: Media/6-NewOutput.PNG "Add a new output binding"
 [img7]: Media/7-NewDocumentDBOutput.PNG "Select DocumentDB"
 [img8]: Media/8-ConfigureOutputBinding.PNG "Configure the binding"
+[img9]: Media/9-AppSettingsOnWebApp.PNG "Go to the App Settings on the Web App"
+[img10]: Media/10-UpdateAppSettingsOnWebApp.PNG "Add the DocumentDB URI and Key to the App Settings"
+
