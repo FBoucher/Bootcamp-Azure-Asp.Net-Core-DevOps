@@ -9,7 +9,7 @@ https://www.microsoft.com/cognitive-services
 
 # Some background
 Head to https://www.microsoft.com/cognitive-services/en-us/text-analytics-api
-Use the demo in the middle of the page to demonstrate the use of the API.  Make sure you show the JSON being returned.  This is a great way for the attendees to visualize what will be call and what will be returned by the API.
+Use the demo in the middle of the page to demonstrate the use of the API.  Make sure you show the JSON being returned.  This is a great way for the attendees to visualize what will be called and what will be returned by the API.
 
 # Let's code!
 ## Add the Text Analytics API
@@ -30,7 +30,7 @@ Return to the function that was created in the previous step.  Click on *Functio
 
 ![alt text][img3]
 
-Create a new App Settings key called *textAnalysisApiKey* and copy the Api key.  Make sure to click on the Save button.
+Create a new App Settings key called *textAnalysisApiKey* and paste the Api key.  Make sure to click on the Save button.
 
 ![alt text][img4]
 
