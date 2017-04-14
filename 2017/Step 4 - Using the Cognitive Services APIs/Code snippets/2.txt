@@ -20,11 +20,7 @@ public static async Task Run(string myQueueItem, TraceWriter log)
 }
 
 private static async Task<string> CallEndpoint(HttpClient client, string uri, byte[] byteData)
-
 {
-    
     var response = await client.PostAsync(uri, new ByteArrayContent(byteData));
-    
     return await response.Content.ReadAsStringAsync();
-
 }
