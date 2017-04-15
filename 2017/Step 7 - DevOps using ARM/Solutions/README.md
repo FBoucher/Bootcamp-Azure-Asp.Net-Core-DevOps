@@ -1,7 +1,1 @@
-# Overview
-
-# Objectives
-
-# Prerequisites
-
-# Exercises
+No change to the Visual Studio solution

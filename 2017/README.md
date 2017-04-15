@@ -1,5 +1,5 @@
 # Goal
-Demonstrate how Infrastructure as Code (IaC) can help provision smoothly an entire solution on Azure. For doing that, we'll start from an empty resource group template project in Visual Studio and add to it to cover all the Azure resources found in the previous steps.
+Automate the creation of the resources required by the application in Azure using Infrastructure as Code (IaC) using Visual Studio Resource Group project. For doing that, we'll start from an empty resource group template project in Visual Studio and add to it to cover all the Azure resources found in the previous steps.
 
 # Reference
 * https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-overview
