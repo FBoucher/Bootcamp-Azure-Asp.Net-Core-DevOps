@@ -28,12 +28,6 @@
                         "properties": {}
                     }
                 }
-            },
-            "functionApp": {
-                "name": "[concat(variables('lowerCaseAppName'),'-functionapp')]",
-                "location": "[variables('defaultResourceLocation')]",
-                "kind": "functionapp",
-                "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('appServicePlanFunction').name)]"
             }
         },
         "resources": [
