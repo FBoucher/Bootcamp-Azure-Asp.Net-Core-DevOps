@@ -49,9 +49,18 @@ Configure the Function App
 
 - From the left section, select **Integrate**. 
 - Select the Storage account connection used in Step 2.
+- Enter the name of the queue created in the previous step. 
+
+![SetQueueStorage][SetQueueStorage]
+
+
+Test the Function App
+--------------------------
+
 
 
 
 [SearchFunctionApp]: Media/SearchFunctionApp.png "Search Function App"
 [CreateFunctionApp]: Media/CreateFunctionApp.png "Create a Function App"
 [CreateDataFunction]: Media/CreateDataFunction.png "Create Data processing Function"
+[SetQueueStorage]: Media/SetQueueStorage.png "Set Queue Storage"
