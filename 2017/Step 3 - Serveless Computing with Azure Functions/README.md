@@ -57,6 +57,10 @@ Configure the Function App
 Test the Function App
 --------------------------
 
+To test our function press the Run button. Go back in your Application ans save some text (ex: "Hello, World").
+The function will automaticaly got trigerred and you should see your message in the logs.
+
+![Result][Result]
 
 
 
@@ -64,3 +68,4 @@ Test the Function App
 [CreateFunctionApp]: Media/CreateFunctionApp.png "Create a Function App"
 [CreateDataFunction]: Media/CreateDataFunction.png "Create Data processing Function"
 [SetQueueStorage]: Media/SetQueueStorage.png "Set Queue Storage"
+[Result]: Media/Result.png "See Logs"
