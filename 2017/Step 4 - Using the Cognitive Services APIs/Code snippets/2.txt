@@ -1,9 +1,14 @@
-public static async Task Run(HttpRequestMessage req, TraceWriter log)
+public static async Task Run(string myQueueItem, TraceWriter log)
 {
     log.Info("Function is starting...");
 
-    //GET THE STRING FROM THE STORAGE QUEUE*******************
-    string comment = "Bonjour le monde!";    //HARDCODED RIGHT NOW
+    //TODO: Modify when real queue item structure is released
+
+    //Assuming the json is like this: {comment:"Hello World!"}
+    
+    dynamic queueItemConverted = JsonConvert.DeserializeObject(myQueueItem); 
+    
+    string comment = queueItemConverted.comment.ToString();
 
     string BaseUrl = "https://westus.api.cognitive.microsoft.com/";
     string AccountKey = ConfigurationManager.AppSettings["textAnalysisApiKey"];
@@ -12,4 +17,10 @@ public static async Task Run(HttpRequestMessage req, TraceWriter log)
     log.Info("Language: " + _language);
 
     log.Info("Function is ending...");
+}
+
+private static async Task<string> CallEndpoint(HttpClient client, string uri, byte[] byteData)
+{
+    var response = await client.PostAsync(uri, new ByteArrayContent(byteData));
+    return await response.Content.ReadAsStringAsync();
 }
