@@ -19,8 +19,20 @@ public static async Task Run(string myQueueItem, TraceWriter log)
     log.Info("Function is ending...");
 }
 
-private static async Task<string> CallEndpoint(HttpClient client, string uri, byte[] byteData)
+private static async Task<String> CallEndpoint(HttpClient client, string uri, byte[] byteData)
+
 {
-    var response = await client.PostAsync(uri, new ByteArrayContent(byteData));
-    return await response.Content.ReadAsStringAsync();
+    
+    using (var content = new ByteArrayContent(byteData))
+    
+    {
+
+        content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+
+        var response = await client.PostAsync(uri, content);
+
+        return await response.Content.ReadAsStringAsync();
+
+    }
+
 }
