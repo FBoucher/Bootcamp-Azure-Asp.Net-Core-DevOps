@@ -37,6 +37,7 @@ Make sure to have your account up and ready before the bootcamp.
 To use the demo code, you are required to install Microsoft Visual studio. The minimum version of Visual Studio to use with the demo code is 2015 with the update 3. [You can download a free trial of Visual Studio here](https://www.visualstudio.com/en-us/news/releasenotes/vs2015-update3-vs)
 
 ### Azure SDK - 2.9.6
-Make sure you have installed the Microsoft Azure SDK for .NET - 2.9.6
+Make sure you have installed the [Microsoft Azure SDK for .NET - 2.9.6](https://www.microsoft.com/en-us/download/details.aspx?id=54289)
 
-[https://www.microsoft.com/en-us/download/details.aspx?id=54289](https://www.microsoft.com/en-us/download/details.aspx?id=54289)
+### Azure PowerShell - 3.7.0 or later
+Make sure you have installed [Azure PowerShell v3.7.0](https://github.com/Azure/azure-powershell/releases/tag/v3.7.0-March2017) or later.
