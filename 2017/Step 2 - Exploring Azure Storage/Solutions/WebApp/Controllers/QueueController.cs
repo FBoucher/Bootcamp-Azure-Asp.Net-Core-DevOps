@@ -17,7 +17,6 @@ namespace WebApp.Controllers
 		}
 
 		// POST: Queue/CreateMessage
-		// Reference : https://docs.microsoft.com/en-us/azure/storage/storage-dotnet-how-to-use-queues
 		[HttpPost]
 		public ActionResult CreateMessage(QueueMessageModel message)
 		{
@@ -31,11 +30,12 @@ namespace WebApp.Controllers
 				CloudQueueClient queueClient = storageAccount.CreateCloudQueueClient();
 
 				// Retrieve a reference to a container.
-				CloudQueue queue = queueClient.GetQueueReference("myqueue");
+				CloudQueue queue = queueClient.GetQueueReference("my-gab-queue");
 
 				// Create the queue if it doesn't already exist
 				queue.CreateIfNotExists();
 
+				// Convert the message to a CloudQueueMessage object
 				var messageAsJson = JsonConvert.SerializeObject(message);
 				var cloudQueueMessage = new CloudQueueMessage(messageAsJson);
 
