@@ -27,14 +27,14 @@ Please visit our website and find out more about us and our incoming [meetup](ht
 Before the bootcamp, we encourage you to make sure you have all the requirement software so you can concentrate on learning and not running installations.  Make sure you get all the source code and install all the required software.
 
 ### Azure subscription
-If don't own an Azure subscription already, you can create your free account today. It comes with a 200$ credit, so you can experience almost everything without spending a dime. 
+If you don't own an Azure subscription already, you can create your free account today. It comes with 200$ credit, so you can experience almost everything without spending a dime. 
 
 Make sure to have your account up and ready before the bootcamp.
 
 [Create your free Azure account today](https://azure.microsoft.com/en-us/free/)
 
 ### Visual Studio
-To use the demo code, you are require to install Microsoft Visual studio. The minimum version of Visual Studio to use with the demo code is 2015 with the update 3. [You can download a free trial of Visual Studio here](https://www.visualstudio.com/en-us/news/releasenotes/vs2015-update3-vs)
+To use the demo code, you are required to install Microsoft Visual studio. The minimum version of Visual Studio to use with the demo code is 2015 with the update 3. [You can download a free trial of Visual Studio here](https://www.visualstudio.com/en-us/news/releasenotes/vs2015-update3-vs)
 
 ### Azure SDK - 2.9.6
 Make sure you have installed the Microsoft Azure SDK for .NET - 2.9.6
