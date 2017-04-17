@@ -116,8 +116,6 @@ This issue was resolved by adding an inbound rule to the firewall on port 8172 (
 
 
 [img1]: https://github.com/alainvezina/GlobalAzureBootcamp/tree/master/2017/Step%201%20-%20Publishing%20your%20first%20Web%20Apps/Media/img1.png "New Project"
-[img2]: https://github.com/alainvezina/GlobalAzureBootcamp/tree/master/2017/Step%201%20-%20Publishing%20your%20first%20Web%20Apps/Media/img2.png "Select ASP.Net Web Application"
-[img3]: https://github.com/alainvezina/GlobalAzureBootcamp/tree/master/2017/Step%201%20-%20Publishing%20your%20first%20Web%20Apps/Media/img3.png "Select MVC template"
 [img4]: https://github.com/alainvezina/GlobalAzureBootcamp/tree/master/2017/Step%201%20-%20Publishing%20your%20first%20Web%20Apps/Media/img4.png "Create new App Service"
 [img5]: https://github.com/alainvezina/GlobalAzureBootcamp/tree/master/2017/Step%201%20-%20Publishing%20your%20first%20Web%20Apps/Media/img5.png "Add App Service details"
 [img6]: https://github.com/alainvezina/GlobalAzureBootcamp/tree/master/2017/Step%201%20-%20Publishing%20your%20first%20Web%20Apps/Media/img6.png "Publish website"
