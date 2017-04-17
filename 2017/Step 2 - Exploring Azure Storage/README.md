@@ -1,5 +1,5 @@
 # Goal
-In this tutorial, we will grab the text provide by the web form and convert it to a message that we will store to an Azure Storage Queue.  This way, each message will be process asynchronously for sentiment analysis.  
+In this tutorial, we will grab the text provide by the web form and convert it to a message that we will than save to an Azure Storage Queue.  This way, each message will be process asynchronously for sentiment analysis.  
 
 # Reference
 * [Azure Storage documentation](https://azure.microsoft.com/en-us/services/storage/)
