@@ -1,5 +1,5 @@
 # Goal
-For this part of the bootcamp, our attendees will create a shiny new website in Visual Studio. We'll then add a form to capture a message submitted by the user. Finally, they'll deploy to Azure App Service so the entire world can marvel at their amazing websites!
+For this part of the bootcamp, our attendees will create a shiny new website in Visual Studio. We'll add a form to capture a message submitted by the user. Finally, they'll deploy to Azure App Service so the entire world can marvel at their amazing websites!
 
 # Reference
 https://www.asp.net/mvc
@@ -7,36 +7,9 @@ https://www.asp.net/mvc
 
 # Let's code!
 ## Create a new website
-Fire up Visual Studio. Click File -> New -> Project (or use the Ctrl-Shift-n shortcut)
+Fire up Visual Studio. Click `File -> Open  -> Project/Solution` and navigate to the supplied solution.
 
 ![alt text][img1]
-
-In the left pane, ensure the following template is selected: `Templates -> Visual C# -> Web`
-
-When the `Web` template is selected, we can specify we want to use `ASP.Net Web Application (.NET Framework)`. Give your project a name, and hit `OK`.
-
-![alt text][img2]
-
-Finally, we'll select the MVC template. We'll de-select the `Host in cloud` option for now (we'll come back to it shortly).
-
-Let's also click the `Change Authentication` button and choose the `No Authentication` option and click `OK`.
-
-Now let's click `OK` one more time and our website has now been created. Morale is raised!
-
-![alt text][img3]
-
-## Coding the website
-
-Let's perform a little clean-up of items we don't need:
-
-* In the home controller, delete these actions:
-    * About()
-    * Contact()
-* The in `/Views/Home` folder, delete these files:
-    * `About.schtml`
-    * `Contact.cshtml`
-
-Now that we've gotten rid of the cruft, let's create that form to capture a message. This will involve creating a Model, a View, and a Controller (this is a MVC app, after all...)
 
 ### The Model
 
@@ -86,28 +59,6 @@ public class QueueController : Controller
     }
 }
 ```
-
-### Almost there...
-
-Let's make a small change to the shared layout at `/Views/Shared/Layout.cshtml`
-
-In the list of nav links, let's remove the links to the views we deleted, and add a link to our queue message form:
-
-```html
-<ul class="nav navbar-nav">
-    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-    <li>@Html.ActionLink("Create message", "CreateMessage", "Queue")</li>
-</ul>
-```
-Finally, let's update the home page to remove all of Microsoft's content. Open `/Views/Home/Index.cshtml` and edit as follows:
-
-```html
-<div class="jumbotron">
-    <h1>Global Azure Bootcamp</h1>
-    <p class="lead">2017</p>
-</div>
-```
-
 ### Build and Run!
 
 Hit F5 and PROFIT!!!
@@ -124,7 +75,7 @@ Start by right-clicking on the web project and clicking `Publish`. If you haven'
 
 ![alt text][img4]
 
-Choose your subscription, and click `New` to setup your App Service: 
+Choose your subscription, and click `New` to setup your App Service:
 
 ![alt text][img5]
 
@@ -134,7 +85,7 @@ Once provisioning is complete, our publishing profile is complete and the Publis
 
 ![alt text][img6]
 
-At this point we should be able to click Publish, and wait a few minutes for the deploy to complete. We can keep an eye on the Output window to check the status. When the deployment is complete, our browser should open a new tab and display our cloud-powered website! 
+At this point we should be able to click Publish, and wait a few minutes for the deploy to complete. We can keep an eye on the Output window to check the status. When the deployment is complete, our browser should open a new tab and display our cloud-powered website!
 
 ![alt text][img7]
 
@@ -152,7 +103,7 @@ Clicking on the App Service will take us to a screen where you can manage and mo
 
 I ran into a couple issues during this deployment. First, stale credentials can prevent subscriptions from appearing when doing a publish. Follow these instruction to remedy: http://stackoverflow.com/questions/24507589/visual-studio-not-finding-my-azure-subscriptions
 
-I also ran into this error during deployment: 
+I also ran into this error during deployment:
 
 ```
 Warning : Retrying the sync because a socket error (10054) occurred
