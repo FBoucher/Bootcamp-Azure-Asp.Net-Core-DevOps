@@ -27,7 +27,7 @@
             <supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.5.2" />
         </startup>
     <appSettings>
-        <add key="StorageConnectionString" value="DefaultEndpointsProtocol=https;AccountName=frankgab2017storage;AccountKey=zBL4XTekj7/oB8RoeBclBr6KUpSx889G8W5MQiqtuW0j9yhWfcu/K+ECy/ShGGJCzWHdGdxlYbgoU6zW9z/ncg==;EndpointSuffix=core.windows.net" />
+        <add key="StorageConnectionString" value="ConnectionStringFromAzurePortal" />
     </appSettings>
     </configuration>
 
