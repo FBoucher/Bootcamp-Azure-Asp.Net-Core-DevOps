@@ -9,7 +9,7 @@ https://www.asp.net/mvc
 ## Create a new website
 Fire up Visual Studio. Click `File -> Open  -> Project/Solution` and navigate to the supplied solution.
 
-![alt text][img1]
+![img1][img1]
 
 ### The Model
 
@@ -27,7 +27,7 @@ public class QueueMessageModel
 
 Under the `/Views` folder, create a `Queue` folder. Add a new view called `CreateMessage`. Use the `Create` template, and select the model we just created. Click `Add` and then open the view for editing.
 
-![alt text][img10]
+![img10][img10]
 
 The only edit we need to make is to remove the "Back to List" `ActionLink` near the bottom of the page.
 
@@ -73,31 +73,31 @@ The easiest way to deploy is by having Visual Studio publish it for you. During 
 
 Start by right-clicking on the web project and clicking `Publish`. If you haven't logged in with your Microsoft account, you'll be asked for your credentials now. Once you are logged in, you should be presented with this screen:
 
-![alt text][img4]
+![img4][img4]
 
 Choose your subscription, and click `New` to setup your App Service:
 
-![alt text][img5]
+![img5][img5]
 
 The Web App Name field will be pre-populated with a globally unique name. Unless a Resource Group and App Service Plan have already been created under the subscription, they will need to be added now. Once all the fields have been filled in, click `Create` and our App Service will be provisioned.
 
 Once provisioning is complete, our publishing profile is complete and the Publish dialog will appear to guide us through the rest of the process:
 
-![alt text][img6]
+![img6][img6]
 
 At this point we should be able to click Publish, and wait a few minutes for the deploy to complete. We can keep an eye on the Output window to check the status. When the deployment is complete, our browser should open a new tab and display our cloud-powered website!
 
-![alt text][img7]
+![img7][img7]
 
 ## Check out the portal
 
 Point a browser to https://portal.azure.com. Click on the Hamburger button and select `All resources` from the side menu. The new App Service should show up:
 
-![alt text][img8]
+![img8][img8]
 
 Clicking on the App Service will take us to a screen where you can manage and monitor your website.
 
-![alt text][img9]
+![img9][img9]
 
 ## Addendum
 
@@ -115,11 +115,11 @@ This issue was resolved by adding an inbound rule to the firewall on port 8172 (
 # End
 
 
-[img1]: https://github.com/alainvezina/GlobalAzureBootcamp/tree/master/2017/Step%201%20-%20Publishing%20your%20first%20Web%20Apps/Media/img1.png "New Project"
-[img4]: https://github.com/alainvezina/GlobalAzureBootcamp/tree/master/2017/Step%201%20-%20Publishing%20your%20first%20Web%20Apps/Media/img4.png "Create new App Service"
-[img5]: https://github.com/alainvezina/GlobalAzureBootcamp/tree/master/2017/Step%201%20-%20Publishing%20your%20first%20Web%20Apps/Media/img5.png "Add App Service details"
-[img6]: https://github.com/alainvezina/GlobalAzureBootcamp/tree/master/2017/Step%201%20-%20Publishing%20your%20first%20Web%20Apps/Media/img6.png "Publish website"
-[img7]: https://github.com/alainvezina/GlobalAzureBootcamp/tree/master/2017/Step%201%20-%20Publishing%20your%20first%20Web%20Apps/Media/img7.png "Deployed website in browser"
-[img8]: https://github.com/alainvezina/GlobalAzureBootcamp/tree/master/2017/Step%201%20-%20Publishing%20your%20first%20Web%20Apps/Media/img8.png "Azure Resources screen"
-[img9]: https://github.com/alainvezina/GlobalAzureBootcamp/tree/master/2017/Step%201%20-%20Publishing%20your%20first%20Web%20Apps/Media/img9.png "Web app management screen"
-[img10]: https://github.com/alainvezina/GlobalAzureBootcamp/tree/master/2017/Step%201%20-%20Publishing%20your%20first%20Web%20Apps/Media/img10.png "Add a view"
+[img1]: Media/img1.png "New Project"
+[img4]: Media/img4.png "Create new App Service"
+[img5]: Media/img5.png "Add App Service details"
+[img6]: Media/img6.png "Publish website"
+[img7]: Media/img7.png "Deployed website in browser"
+[img8]: Media/img8.png "Azure Resources screen"
+[img9]: Media/img9.png "Web app management screen"
+[img10]: Media/img10.png "Add a view"
