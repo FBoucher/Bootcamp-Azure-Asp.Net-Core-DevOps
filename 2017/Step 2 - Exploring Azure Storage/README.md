@@ -4,6 +4,7 @@ In this tutorial, we will capture text that is entered in a web form. Next we wi
 # Reference
 * [Azure Storage documentation](https://azure.microsoft.com/en-us/services/storage/)
 * [Get started with Azure Queue storage using .NET](https://docs.microsoft.com/en-us/azure/storage/storage-dotnet-how-to-use-queues)
+* [Azure Storage Explorer](http://storageexplorer.com/)
 
 # Nuget Package Required
 
@@ -73,7 +74,7 @@ var messageAsJson = JsonConvert.SerializeObject(message);
 
 var cloudQueueMessage = new CloudQueueMessage(messageAsJson);
 ```
-# Create a message and add it to the queue.
+# Add the message to the queue.
 ```csharp
 queue.AddMessage(cloudQueueMessage);
 ```
