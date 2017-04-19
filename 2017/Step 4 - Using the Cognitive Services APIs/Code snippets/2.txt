@@ -2,13 +2,11 @@ public static async Task Run(string myQueueItem, TraceWriter log)
 {
     log.Info("Function is starting...");
 
-    //TODO: Modify when real queue item structure is released
-
-    //Assuming the json is like this: {comment:"Hello World!"}
-    
     dynamic queueItemConverted = JsonConvert.DeserializeObject(myQueueItem); 
     
-    string comment = queueItemConverted.comment.ToString();
+    var comment = queueItemConverted.Text.ToString();
+
+    log.Info($"Text from Message: {comment}");
 
     string BaseUrl = "https://westus.api.cognitive.microsoft.com/";
     string AccountKey = ConfigurationManager.AppSettings["textAnalysisApiKey"];

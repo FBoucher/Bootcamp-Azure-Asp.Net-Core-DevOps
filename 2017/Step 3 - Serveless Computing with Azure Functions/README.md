@@ -35,9 +35,10 @@ Click the create button.
 Create The Data processing Azure Function 
 -----------------------------------------
 
-- Select the Scenario Data processing
-- Select C#
-- Click the Create this function button.
+1. Click the "+" sign to add a new Function App.
+1. Select the Scenario Data processing
+1. Select C#
+1. Click the *Create this function* button.
 
 ![CreateDataFunction][CreateDataFunction]
 
@@ -47,9 +48,11 @@ Create The Data processing Azure Function
 Configure the Function App
 --------------------------
 
-- From the left section, select **Integrate**. 
-- Select the Storage account connection used in Step 2.
-- Enter the name of the queue created in the previous step. 
+1. From the left section, select **Integrate**.
+1. Click on the *New* on the side of *Storage account connection*. 
+1. Select the Storage account connection used in Step 2.
+1. Enter `my-gab-queue` or the name of the queue created in the previous step. 
+1. Click the Save button to keep your changes.
 
 ![SetQueueStorage][SetQueueStorage]
 
@@ -57,8 +60,14 @@ Configure the Function App
 Test the Function App
 --------------------------
 
-To test our function press the Run button. Go back in your Application and save some text (ex: "Hello, World").
+To test our function press the Run button. Go back in your WebApp and save some text (ex: "Hello GLobal Azure Bootcamp!").
 The function will automatically get triggered and you should see your message in the logs.
+
+Now let's get the comment inside our message. Copy-Paste the code from the snippet `function_QueueTrigger_final.txt` inside your function.
+
+The `#r` command are to add references to library we need that are already available in Azure. Save your changes.
+
+Clear the Logs windows by clicking the Clear button, and go back save another comment in the WebApp. You should have something similar to that.
 
 ![Result][Result]
 
@@ -76,7 +85,7 @@ First, Open a new Visual Studio window. Create a new Console App project.
 Nuget Package
 -------------
 
-From the Code snippets, execute in the Package Manager Console. From the top screen menu, select Tools > NuGet Package Manager > Package Manager Console. Copy-Paste one by one the Install command.  That will install what's missing for our application.
+From the Code snippets `Bonus_Console_App.md` section `Nuget Package Required`, execute in the Package Manager Console. From the top screen menu, select Tools > NuGet Package Manager > Package Manager Console. Copy-Paste one by one the Install command.  That will install what's missing for our application.
 
 - Microsoft Azure Storage Client Library for .NET: This package provides programmatic access to data resources in your storage account.
 - Microsoft Azure Configuration Manager library for .NET: This package provides a class for parsing a connection string in a configuration file, regardless of where your application is running.
@@ -88,12 +97,12 @@ Now, we need to specify the connectionstring so our application can connect to t
 
 ![connectionstring][connectionstring]
 
-Use this connectionstring to customize the snippet App.config and copy-paste that new version in the App.config file.
+Use this connectionstring to customize the snippet (`Bonus_Console_App.md` section `App.config`) App.config and copy-paste that new version in the App.config file.
 
 Console App
 -----------
 
-Finally, use the snippet to modify the Main function of our application. The code should look familiar since it the same use in step 2 inside our Web Application.
+Finally, use the snippet `Bonus_Console_App.md` section `Console App to create Message Queue` to modify the Main function of our application. The code should look familiar since it the same use in step 2 inside our Web Application.
 
 Voila. By executing your console application you will add a message in the queue.  Look in the Azure Function logs to see you message text.
 

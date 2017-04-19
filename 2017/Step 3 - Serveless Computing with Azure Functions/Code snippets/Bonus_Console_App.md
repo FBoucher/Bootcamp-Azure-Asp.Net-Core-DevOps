@@ -14,8 +14,13 @@
             // Create the queue if it doesn't already exist
             queue.CreateIfNotExists();
 
+            var msg = new QueueMessageModel { Text = "Hello GLobal Azure Bootcamp!" };
+
+            // Convert the message to a CloudQueueMessage object
+            var messageAsJson = JsonConvert.SerializeObject(msg);
+
             // Create a message and add it to the queue.
-            CloudQueueMessage message = new CloudQueueMessage("Hello GLobal Azure Bootcamp!");
+            CloudQueueMessage message = new CloudQueueMessage(messageAsJson);
             queue.AddMessage(message);
         }
 
