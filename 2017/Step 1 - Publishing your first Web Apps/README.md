@@ -54,26 +54,33 @@ In file `/Views/Shared/_Layout.cshtml`, uncomment the Create Message link. The l
 Under the `/Controllers` folder, add a new empty controller and name it `QueueController`. We'll create two actions to handle the `GET` and `POST` requests for our message form:
 
 ```cs
-public class QueueController : Controller
+using System;
+using System.Web.Mvc;
+using WebApp.Models;
+
+namespace WebApp.Controllers
 {
-    // GET: Queue/CreateMessage
-    public ActionResult CreateMessage()
+    public class QueueController : Controller
     {
-        return View();
-    }
-
-    // POST: Queue/CreateMessage
-    [HttpPost]
-    public ActionResult CreateMessage(QueueMessageModel message)
-    {
-        if (ModelState.IsValid)
+        // GET: Queue/CreateMessage
+        public ActionResult CreateMessage()
         {
-            // TODO: Insert add message to queue logic here
-
-            return RedirectToAction("Index", "Home");
+            return View();
         }
 
-        return View(message);
+        // POST: Queue/CreateMessage
+        [HttpPost]
+        public ActionResult CreateMessage(QueueMessageModel message)
+        {
+            if (ModelState.IsValid)
+            {
+                // TODO: Insert add message to queue logic here
+
+                return RedirectToAction("Index", "Home");
+            }
+
+            return View(message);
+        }
     }
 }
 ```
