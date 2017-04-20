@@ -64,7 +64,7 @@ Now you can view the application on IE or Chrome. Open the developper console (F
 
 At this point, you should be able to see some data in App Insights if you login in the Portal and look at the overview section.
 
-## Tracking exceptionss
+## Tracking Unhandled Exceptions (request failures)
 Now we will demonstrate how to track exceptions and how to log them ourselves (custom exception logging)
 
 Add a new folder in the project `Services`
@@ -113,7 +113,7 @@ Back to visual studio, under the ApplicationInsights.config file, click on `Sear
 Back to the Index method of the `ServiceController`, replace the code of the method by;
 
 ```cs
-try
+            try
             {                
                 Services.SomeService.ThrowAnExceptionPlease();
             }
