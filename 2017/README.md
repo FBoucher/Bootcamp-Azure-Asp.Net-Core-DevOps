@@ -19,13 +19,13 @@ Also you can view our Slideshare at [www.slideshare.net/MSDEVMTL/msdevmtl-inform
 
 ## Our speakers for the Global Azure Bootcamp 2017
 
-* [Alexandre Brisebois, Microsoft](https://www.meetup.com/fr-FR/msdevmtl/members/20660791/)
-* [Vivien Chevalier](https://www.meetup.com/fr-FR/msdevmtl/members/107004102/)
-* [Vincent Biret](https://www.meetup.com/fr-FR/msdevmtl/members/70533122/)
-* [Guy Barrette, MVP Azure](http://guybarrette.me/)
-* [David Chapdelaine, Microsoft](https://www.meetup.com/fr-FR/msdevmtl/members/143343512/)
-* Samir Bellouti, Sabbel Conseils
-* [Stéphane Lapointe, GSOFT, MVP Azure](https://www.meetup.com/fr-FR/msdevmtl/members/43398832/)
+* Alexandre Brisebois, Microsoft - [Twitter](https://twitter.com/Brisebois) | [GitHub](https://github.com/brisebois)
+* Vivien Chevalier - [Twitter](https://twitter.com/vchevallier) | [GitHub](https://github.com/vivienchevallier)
+* Vincent Biret - [Twitter](https://twitter.com/baywet) | [GitHub](https://github.com/baywet)
+* Guy Barrette, MVP Azure - [Twitter](https://twitter.com/GuyBarrette) | [GitHub](https://github.com/guybarrette)
+* David Chapdelaine, Microsoft - [Twitter](https://twitter.com/d_chapdelaine) | [GitHub](https://github.com/dchapdelaine)
+* Samir Bellouti, Sabbel Conseils - [Twitter](https://twitter.com/sbellouti) | [GitHub](https://github.com/sbellouti)
+* Stéphane Lapointe, GSOFT, MVP Azure - [Twitter](https://twitter.com/s_lapointe) | [GitHub](https://github.com/slapointe)
 
 ## Technology Stack for the Global Azure Bootcamp 2017
 
