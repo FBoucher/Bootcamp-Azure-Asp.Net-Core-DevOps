@@ -109,7 +109,7 @@ now in the layout file `views\Shared\_Layout.cshtml`, after line 37, add;
 Now run the applicaiton and click on the 'Service' link on the top. You should see and exception stack.
 Back to visual studio, under the ApplicationInsights.config file, click on `Search debug session telemetry' and you should see the failed request along with the details.
 
-## Tracking Handled excetpiosn
+## Tracking Handled Exceptions
 Back to the Index method of the `ServiceController`, replace the code of the method by;
 
 ```cs
