@@ -25,7 +25,6 @@ namespace WebApp.Repositories
             CollectionUri = UriFactory.CreateDocumentCollectionUri(DbId, CollectionId);
             DocAccountUri = new Uri(serverUrl);
             DocClient = new DocumentClient(DocAccountUri, key);
-            
         }
 
         public async Task<IEnumerable<SentimentAnalysisModel>> GetSentimentAnalysis()
