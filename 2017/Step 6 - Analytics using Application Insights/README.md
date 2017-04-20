@@ -8,9 +8,11 @@ https://docs.microsoft.com/en-us/azure/application-insights/app-insights-analyti
 # Let's code!
 ## Add App Insights to the web application
 
-![img1][img1]
-
 ![img2][img2]
+
+Click on Start Free button
+
+![img1][img1]
 
 Notice that the file ApplicationInsights.config has been added to the project. Click on it to open the node.
 There are 
@@ -61,6 +63,74 @@ Note that this code is available in the portal (App Insight -> Getting Started -
 Now you can view the application on IE or Chrome. Open the developper console (F12) and you will notice calls to App Insights in the network tab
 
 At this point, you should be able to see some data in App Insights if you login in the Portal and look at the overview section.
+
+## Tracking exceptionss
+Now we will demonstrate how to track exceptions and how to log them ourselves (custom exception logging)
+
+Add a new folder in the project `Services`
+Now add a new cs file and call it `SomeService.cs`
+In this file, copy and paste the definition of a custom excection `ServiceException` and the `SomeService` class:
+
+```cs
+public class ServiceException : Exception
+    {
+        public ServiceException() : base("Service Exception") { }
+        public ServiceException(Exception inner) : base("Service Exception", inner) { }
+    }
+ 
+  public class SomeService
+    {
+        public static void ThrowAnExceptionPlease()
+        {
+            throw new ServiceException();
+        }
+    }
+```
+
+Now add an empty controller to the web applicaiton and call it `ServiceController.cs`
+In the `Index` method, add the following line of code:
+```cs 
+        Services.SomeService.ThrowAnExceptionPlease();
+```
+Open the related view file  `views\service\index.cshtml` and add
+```cshtml
+@{
+    ViewBag.Title = "ViewService";
+}
+
+<h2>Hello!!!!</h2>
+```
+
+now in the layout file `views\Shared\_Layout.cshtml`, after line 37, add;
+```cshtml
+<li>@Html.ActionLink("Service", "Index", "Service")</li>
+```
+
+Now run the applicaiton and click on the 'Service' link on the top. You should see and exception stack.
+Back to visual studio, under the ApplicationInsights.config file, click on `Search debug session telemetry' and you should see the failed request along with the details.
+
+## Tracking Handled excetpiosn
+Back to the Index method of the `ServiceController`, replace the code of the method by;
+
+```cs
+try
+            {                
+                Services.SomeService.ThrowAnExceptionPlease();
+            }
+            catch(Exception ex)
+            {
+                var client = new TelemetryClient();
+                client.TrackException(ex);
+            }
+            return View();
+```
+
+Run the application again and click on the `Service` menu item. You should not see the exception stack at this point.
+
+On the Azure Portal, click on Metric Explorer and then add metrics to add the exceptions. We should be able to see the details of the exceptions.
+
+
+
 
 [img1]: Media/img1.png "Add App Insights to the application"
 [img2]: Media/img2.png
