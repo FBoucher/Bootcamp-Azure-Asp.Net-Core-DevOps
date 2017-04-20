@@ -30,7 +30,7 @@ Head to :
 0. Ask the attendees to open the file 1.json in the *Code Snippets folder*. Copy an paste the code from the `parameterFile` `parameters` member into `Solutions\Deployment\azuredeploy.parameters.json`.
 0. Ask to save both files and call `& '.\Solutions\Deployment\Deploy-AzureResourceGroup.ps1' -ResourceGroupLocation 'East US 2'`
 
-![Login & deploy snippet#1](.\Media\snippet1.png)
+![Login & deploy snippet#1](Media/snippet1.png)
 
 ## Add function App Service Plan
 > In order to compensate an issue with Function Apps at the time of writting this, if you want a dynamic App Service plan  in a resource group, it need to be created first before any other static/regular App Service Plan, this is a workaround and the issue is already known by the product team.
@@ -38,7 +38,7 @@ Head to :
 0. Ask the attendees to open the file 2.json in the *Code Snippets folder*. Copy an paste the code from the `templateFile` members (variables, resources) into `Solutions\Deployment\azuredeploy.json`.
 0. Ask to save template file and call `& '.\Solutions\Deployment\Deploy-AzureResourceGroup.ps1' -ResourceGroupLocation 'East US 2'`
 
-![Deploy snippet#2](.\Media\snippet2.png)
+![Deploy snippet#2](Media/snippet2.png)
 
 ## Add web application
 0. Ask the attendees to open the file 3.json in the *Code Snippets folder*. Copy an paste the code from the `templateFile` members (variables, resources) into `Solutions\Deployment\azuredeploy.json`.
@@ -61,6 +61,6 @@ Head to :
 
 0. Ask to save template file and call `& '.\Solutions\Deployment\Deploy-AzureResourceGroup.ps1' -ResourceGroupLocation 'East US 2'`
 
-![Deploy snippet#6](.\Media\snippet6.png)
+![Deploy snippet#6](Media/snippet6.png)
 
 # End
