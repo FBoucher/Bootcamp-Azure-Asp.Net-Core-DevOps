@@ -16,20 +16,38 @@ Fire up Visual Studio. Click `File -> Open  -> Project/Solution` and navigate to
 In the `/Models` folder, add a new class called `QueueMessageModel.cs`:
 
 ```cs
-public class QueueMessageModel
+using System;
+using System.ComponentModel.DataAnnotations;
+
+namespace WebApp.Models
 {
-	[Required]
-	public string Text { get; set; }
+    public class QueueMessageModel
+    {
+        [Required]
+        public string Text { get; set; }
+    }
 }
 ```
 
 ### The View
 
-Under the `/Views` folder, create a `Queue` folder. Add a new view called `CreateMessage`. Use the `Create` template, and select the model we just created. Click `Add` and then open the view for editing.
+Under the `/Views` folder, create a `Queue` folder [Add -> New Scaffolded item... -> MVC 5 View]. Add a new view called `CreateMessage`. Use the `Create` template, and select the model we just created `QueueMessageModel`. Click `Add` and then open the view for editing.
 
 ![img10][img10]
 
 The only edit we need to make is to remove the "Back to List" `ActionLink` near the bottom of the page.
+
+```html
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+```
+
+### The Layout
+
+In file `/Views/Shared/_Layout.cshtml`, uncomment the Create Message link. The line should  look like this:
+
+`<li>@Html.ActionLink("Create message", "CreateMessage", "Queue")</li>`
 
 ### The Controller
 
