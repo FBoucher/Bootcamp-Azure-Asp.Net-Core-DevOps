@@ -22,7 +22,7 @@ Also you can view our Slideshare at [www.slideshare.net/MSDEVMTL/msdevmtl-inform
 * [Alexandre Brisebois, Microsoft](https://www.meetup.com/fr-FR/msdevmtl/members/20660791/)
 * [Vivien Chevalier](https://www.meetup.com/fr-FR/msdevmtl/members/107004102/)
 * [Vincent Biret](https://www.meetup.com/fr-FR/msdevmtl/members/70533122/)
-* [Guy Barrette, MVP Azure](https://www.meetup.com/fr-FR/msdevmtl/members/19648731/)
+* [Guy Barrette, MVP Azure](http://guybarrette.me/)
 * [David Chapdelaine, Microsoft](https://www.meetup.com/fr-FR/msdevmtl/members/143343512/)
 * Samir Bellouti, Sabbel Conseils
 * [Stéphane Lapointe, GSOFT, MVP Azure](https://www.meetup.com/fr-FR/msdevmtl/members/43398832/)
