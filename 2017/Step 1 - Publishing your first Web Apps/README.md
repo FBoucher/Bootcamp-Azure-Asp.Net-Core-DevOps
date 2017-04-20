@@ -6,8 +6,8 @@ https://www.asp.net/mvc
 
 
 # Let's code!
-## Create a new website
-Fire up Visual Studio. Click `File -> Open  -> Project/Solution` and navigate to the supplied solution.
+## Open website
+Fire up Visual Studio. Click `File -> Open  -> Project/Solution` and navigate to the supplied solution in Step 0.
 
 ![img1][img1]
 

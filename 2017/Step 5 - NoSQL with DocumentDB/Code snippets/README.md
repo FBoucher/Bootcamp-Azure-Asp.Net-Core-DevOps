@@ -1,7 +1,0 @@
-# Overview
-
-# Objectives
-
-# Prerequisites
-
-# Exercises
