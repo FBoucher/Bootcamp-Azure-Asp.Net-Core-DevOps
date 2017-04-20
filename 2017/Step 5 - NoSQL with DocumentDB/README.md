@@ -52,7 +52,7 @@ Ask the attendees to open the file OutputModel.txt in the Code Snippets/Function
 ## Update the AppSettings of the WebApp
 
 ### If running locally
-Ask the attendees to copy the file Web.Deployment.config in the Code Snippets/WebApp folder to the root of the WebApp project
+Ask the attendees to copy the file Web.Deployment.config in the Code Snippets/WebApp folder to the root of the WebApp project and add it to the project in Visual Studio.
 
 * Update the Web.Config to reference that file
 ```
