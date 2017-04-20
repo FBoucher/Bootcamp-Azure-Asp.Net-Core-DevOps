@@ -8,11 +8,15 @@ https://docs.microsoft.com/en-us/azure/application-insights/app-insights-analyti
 # Let's code!
 ## Add App Insights to the web application
 
-![img2][img2]
+Right click on the web project : add -> Application Insights Telemetry...
+
+<img src="Media/img2.png" height="500">
+
+![img2][img2] 
 
 Click on Start Free button
 
-![img1][img1]
+<img src="Media/img1.png" width="500">
 
 Notice that the file ApplicationInsights.config has been added to the project. Click on it to open the node.
 There are 
@@ -72,13 +76,13 @@ Now add a new cs file and call it `SomeService.cs`
 In this file, copy and paste the definition of a custom excection `ServiceException` and the `SomeService` class:
 
 ```cs
-public class ServiceException : Exception
+    public class ServiceException : Exception
     {
         public ServiceException() : base("Service Exception") { }
         public ServiceException(Exception inner) : base("Service Exception", inner) { }
     }
  
-  public class SomeService
+    public class SomeService
     {
         public static void ThrowAnExceptionPlease()
         {
@@ -125,6 +129,12 @@ Back to the Index method of the `ServiceController`, replace the code of the met
             return View();
 ```
 
+Add the using line to make it build:
+
+```cs
+using Microsoft.ApplicationInsights;
+```
+
 Run the application again and click on the `Service` menu item. You should not see the exception stack at this point.
 
 On the Azure Portal, click on Metric Explorer and then add metrics to add the exceptions. We should be able to see the details of the exceptions.
@@ -132,7 +142,7 @@ On the Azure Portal, click on Metric Explorer and then add metrics to add the ex
 
 
 
-[img1]: Media/img1.png "Add App Insights to the application"
-[img2]: Media/img2.png
+[img1]: Media/img1.png
+[img2]: (Media/img2.png = 200x200) "Add App Insights to the application"
 [img3]: Media/img3.png 
 [img4]: Media/img4.png
