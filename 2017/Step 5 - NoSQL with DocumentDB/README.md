@@ -56,7 +56,7 @@ public static async Task<SentimentAnalysisModel> Run(string myQueueItem, TraceWr
 ## Output our sentiment analysis model
 Ask the attendees to open the file OutputModel.txt in the Code Snippets/Function folder.  Add this at the very and of the main function.
 
-###Final Result:
+Final Result:
 
 ```csharp
 #r "System.Web"
