@@ -1,4 +1,4 @@
-# Global Azure Bootcamp 2017 - Montréal, Canada
+# Global Azure Bootcamp 2017 - Ottawa, Canada
 
 <img align="left" src="https://global.azurebootcamp.net/wp-content/uploads/2016/09/2017-logo-250x169.png" width="250">
 
@@ -8,24 +8,24 @@ On **April 22, 2017**, all communities will come together once again in the fift
 
 You will find included in this repository all materials use during the demo so you can try it at home.
 
-## Who is [#MSDEVMTL](https://www.meetup.com/fr-FR/msdevmtl/?chapter_analytics_code=UA-24676541-1)?
-<img align="left" src="https://pbs.twimg.com/profile_images/495548465250721792/f_TgS2R_.png" width="200">[#MSDEVMTL](https://www.meetup.com/fr-FR/msdevmtl/?chapter_analytics_code=UA-24676541-1) is a Microsoft User Group communities based in Montreal. 
+## Who is [#OttCloudTech](https://www.meetup.com/fr-FR/msdevmtl/?chapter_analytics_code=UA-24676541-1)?
+<img align="left" src="https://secure.meetupstatic.com/photos/event/8/c/e/c/600_448176076.jpeg" width="200">[#OttCloudTech](https://www.meetup.com/OttCloudTech) is a Cloud User Group communities based in Ottawa. 
 
-This group is designed to bring together the Microsoft Windows Azure development community in the Montréal area to talk about challenges, roadmap, what we'd like to see in future releases, and overall user experience. 
+This group is designed to bring together the Cloud development community in the Ottawa area to talk about challenges, roadmap, what we'd like to see in future releases, and overall user experience. 
 
-Please visit our website and find out more about us and our incoming [meetup](https://www.meetup.com/fr-FR/msdevmtl/?chapter_analytics_code=UA-24676541-1).
-
-Also you can view our Slideshare at [www.slideshare.net/MSDEVMTL/msdevmtl-informations](www.slideshare.net/MSDEVMTL/msdevmtl-informations)
+Please visit our website and find out more about us and our incoming [meetup](https://www.meetup.com/OttCloudTech/).
 
 ## Our speakers for the Global Azure Bootcamp 2017
 
-* Alexandre Brisebois, Microsoft - [Twitter](https://twitter.com/Brisebois) | [GitHub](https://github.com/brisebois)
-* Vivien Chevallier, Lixar - [Twitter](https://twitter.com/vchevallier) | [GitHub](https://github.com/vivienchevallier)
-* Vincent Biret - [Twitter](https://twitter.com/baywet) | [GitHub](https://github.com/baywet)
-* Guy Barrette, MVP Azure - [Twitter](https://twitter.com/GuyBarrette) | [GitHub](https://github.com/guybarrette)
-* David Chapdelaine, Microsoft - [Twitter](https://twitter.com/d_chapdelaine) | [GitHub](https://github.com/dchapdelaine)
-* Samir Bellouti, Sabbel Conseils - [Twitter](https://twitter.com/sbellouti) | [GitHub](https://github.com/sbellouti)
-* Stéphane Lapointe, GSOFT, MVP Azure - [Twitter](https://twitter.com/s_lapointe) | [GitHub](https://github.com/slapointe)
+* Eric Leonard
+* Chris Hardie
+* Marc Dugas
+* Frank Boucher
+* Vincent Lerouvillois
+* Carmai Constant
+* Joel Hebert
+* Edwin M Sarmiento
+* John Kirkham
 
 ## Technology Stack for the Global Azure Bootcamp 2017
 
