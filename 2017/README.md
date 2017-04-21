@@ -1,4 +1,4 @@
-# Global Azure Bootcamp 2017 - Montréal, Canada
+# Global Azure Bootcamp 2017 - Ottawa, Canada
 
 <img align="left" src="https://global.azurebootcamp.net/wp-content/uploads/2016/09/2017-logo-250x169.png" width="250">
 
