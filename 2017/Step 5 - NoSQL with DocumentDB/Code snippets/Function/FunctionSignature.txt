@@ -1,1 +1,1 @@
-out SentimentAnalysisModel sentimentOutput
+public static async Task<SentimentAnalysisModel> Run(string myQueueItem, TraceWriter log)
