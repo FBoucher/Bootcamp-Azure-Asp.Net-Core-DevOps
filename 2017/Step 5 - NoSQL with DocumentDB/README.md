@@ -41,13 +41,148 @@ Configure the output as shown here. In the DocumentDB account connection field, 
 ![alt text][img8]
 
 ## Create the sentiment analysis model
-Ask the attendees to open the file SentimentAnalysisModel.txt.txt in the Code Snippets/Function folder.  Copy the content outside of the function definition to use it as our output.
+Ask the attendees to open the file SentimentAnalysisModel.txt in the Code Snippets/Function folder.  Copy the content outside of the function definition to use it as our output.
 
 ## Update the signature of the Function
-Ask the attendees to open the file FunctionSignature.txt in the Code Snippets/Function folder.  Add this parameters to the signature of the function.
+Ask the attendees to open the file FunctionSignature.txt in the Code Snippets/Function folder.  Change the signature of the function.
+```
+public static async Task Run(string myQueueItem, TraceWriter log)
+```
+Becomes:
+```
+public static async Task<SentimentAnalysisModel> Run(string myQueueItem, TraceWriter log)
+```
 
 ## Output our sentiment analysis model
 Ask the attendees to open the file OutputModel.txt in the Code Snippets/Function folder.  Add this at the very and of the main function.
+
+###Final Result:
+
+```csharp
+#r "System.Web"
+#r "Newtonsoft.Json"
+
+using System.Web;
+using System.Text;
+using System.IO;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using Newtonsoft.Json;
+using System.Configuration;
+
+
+public class SentimentAnalysisModel
+{
+    public string message { get; set; }
+
+    public double sentimentScore { get; set; }
+
+    public string language { get; set; }
+}
+
+public static async Task<SentimentAnalysisModel> Run(string myQueueItem, TraceWriter log)
+{
+    log.Info("Function is starting...");
+
+    dynamic queueItemConverted = JsonConvert.DeserializeObject(myQueueItem); 
+    
+    var comment = queueItemConverted.Text.ToString();
+
+    log.Info($"Text from Message: {comment}");
+
+    string BaseUrl = "https://westus.api.cognitive.microsoft.com/";
+    string AccountKey = ConfigurationManager.AppSettings["textAnalysisApiKey"];
+
+    var _language = await DetectLanguage(comment, BaseUrl, AccountKey);
+    log.Info("Language: " + _language);
+
+    var _sentiment = await DetectSentiment(comment, BaseUrl, AccountKey);
+    log.Info("Sentiment: " + _sentiment.ToString());
+
+
+    var model = new SentimentAnalysisModel
+    {
+        message = comment,
+        sentimentScore = _sentiment,
+        language = _language
+    };
+
+    log.Info("Function is ending...");
+
+    return model;
+}
+
+private static async Task<String> CallEndpoint(HttpClient client, string uri, byte[] byteData)
+
+{
+    
+    using (var content = new ByteArrayContent(byteData))
+    
+    {
+
+        content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+
+        var response = await client.PostAsync(uri, content);
+
+        return await response.Content.ReadAsStringAsync();
+
+    }
+
+}
+
+
+private static async Task<string> DetectLanguage(string comment, string BaseUrl, string AccountKey)
+{
+    using (var client = new HttpClient())
+    {
+        client.BaseAddress = new Uri(BaseUrl);
+
+        // Request headers.
+        client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", AccountKey);
+        client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+        // Request body. Insert your text data here in JSON format.
+        byte[] byteData = Encoding.UTF8.GetBytes("{\"documents\":[" +
+            "{\"id\":\"1\",\"text\":\"" + comment + "\"}" +
+            "]}");
+
+        var queryString = HttpUtility.ParseQueryString(string.Empty);
+        queryString["numberOfLanguagesToDetect"] = "1";
+        var uri = "text/analytics/v2.0/languages?" + queryString;
+        var response = await CallEndpoint(client, uri, byteData);
+        
+        dynamic _responseConverted = JsonConvert.DeserializeObject(response); 
+        string language = _responseConverted.documents[0].detectedLanguages[0].name.ToString();
+
+        return language;
+    }
+}
+
+private static async Task<float> DetectSentiment(string comment, string BaseUrl, string AccountKey)
+{
+    using (var client = new HttpClient())
+    {
+        client.BaseAddress = new Uri(BaseUrl);
+
+        // Request headers.
+        client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", AccountKey);
+        client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+        // Request body. Insert your text data here in JSON format.
+        byte[] byteData = Encoding.UTF8.GetBytes("{\"documents\":[" +
+            "{\"id\":\"1\",\"text\":\"" + comment + "\"}" +
+            "]}");
+
+        var uri = "text/analytics/v2.0/sentiment";
+        var response = await CallEndpoint(client, uri, byteData);
+        dynamic _responseConverted = JsonConvert.DeserializeObject(response);
+        float sentiment = float.Parse(_responseConverted.documents[0].score.ToString());
+
+        return sentiment;
+    }
+}
+```
+
 
 ## Update the AppSettings of the WebApp
 
@@ -77,13 +212,16 @@ Ask the attendeeds to Update the settings to include the DocumentDB URI and key.
 
 ## Update the WebApp to add our new view
 
-* In Visual Studio, ask the attendees to create a Sentiment folder under the View folder and copy the file ViewSentimentAnalysis.cshtm from the Code Snippets/WebApp folder
+* In Visual Studio, ask the attendees to add a reference to Microsoft.Azure.DocumentDB nuget package
+	* Install-Package Microsoft.Azure.DocumentDB
 
 * In Visual Studio, ask the attendees to copy the file SentimentAnalysisModel.cs from the Code Snippets/WebApp folder to the Models folder
 
+* In Visual Studio, ask the attendees to create a Repositories folder at the root of the project and copy the file SentimentAnalysisRepository.cs from the Code Snippets/WebApp folder
+
 * In Visual Studio, ask the attendees to copy the file SentimentController.cs from the Code Snippets/WebApp folder to the Controllers folder
 
-* In Visual Studio, ask the attendees to create a Repositories folder at the root of the project and copy the file SentimentAnalysisRepository.cs from the Code Snippets/WebApp folder
+* In Visual Studio, ask the attendees to create a Sentiment folder under the View folder and copy the file ViewSentimentAnalysis.cshtm from the Code Snippets/WebApp folder
 
 * Ask the attendees to update the file "Views\Shared\_Layout.cshtml" to add a reference to our new View. 
 
@@ -113,4 +251,3 @@ Load your web app and navigate to the new page to view your sentiment analysis r
 [img8]: Media/8-ConfigureOutputBinding.PNG "Configure the binding"
 [img9]: Media/9-AppSettingsOnWebApp.PNG "Go to the App Settings on the Web App"
 [img10]: Media/10-UpdateAppSettingsOnWebApp.PNG "Add the DocumentDB URI and Key to the App Settings"
-
