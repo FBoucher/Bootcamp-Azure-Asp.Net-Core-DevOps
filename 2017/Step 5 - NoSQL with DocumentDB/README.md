@@ -223,7 +223,7 @@ Ask the attendeeds to Update the settings to include the DocumentDB URI and key.
 
 * In Visual Studio, ask the attendees to create a Sentiment folder under the View folder and copy the file ViewSentimentAnalysis.cshtm from the Code Snippets/WebApp folder
 
-* Ask the attendees to update the file "Views\Shared\_Layout.cshtml" to add a reference to our new View. 
+* Ask the attendees to update the file "Views\Shared&#92;_Layout.cshtml" to add a reference to our new View. 
 
 ```
 <li>@Html.ActionLink("Home", "Index", "Home")</li>
