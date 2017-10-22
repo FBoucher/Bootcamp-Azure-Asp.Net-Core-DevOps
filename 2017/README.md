@@ -1,8 +1,8 @@
-# Global Azure Bootcamp 2017 - Ottawa, Canada
+# Global Azure Bootcamp 2017 - (special edition), Canada
 
 <img align="left" src="https://global.azurebootcamp.net/wp-content/uploads/2016/09/2017-logo-250x169.png" width="250">
 
-All around the world user groups and communities want to learn about Azure and Cloud Computing! 
+All around the world user groups and communities want to learn about Azure and Cloud Computing!
 
 On **April 22, 2017**, all communities will come together once again in the fifth great [Global Azure Bootcamp](https://global.azurebootcamp.net/) event! 
 
@@ -17,15 +17,9 @@ Please visit our website and find out more about us and our incoming [meetup](ht
 
 ## Our speakers for the Global Azure Bootcamp 2017
 
-* Eric Leonard
-* Chris Hardie
-* Marc Dugas
+* Hinault Donfack
+* Mathieu Benoit
 * Frank Boucher
-* Vincent Lerouvillois
-* Carmai Constant
-* Joel Hebert
-* Edwin M Sarmiento
-* John Kirkham
 
 ## Technology Stack for the Global Azure Bootcamp 2017
 
