@@ -47,12 +47,12 @@ Configure the Function App
 
 1. From the left section, select **Integrate**.
 
-~1. Click on the *New* on the side of *Storage account connection*.
-1. Select the Storage account connection used in Step 2.
-1. Enter `my-gab-queue` or the name of the queue created in the previous step.
-1. Click the Save button to keep your changes.
+~~1. Click on the *New* on the side of *Storage account connection*.~~
+~~1. Select the Storage account connection used in Step 2.~~
+~~1. Enter `my-gab-queue` or the name of the queue created in the previous step.~~
+~~1. Click the Save button to keep your changes.~~
 
-![SetQueueStorage][SetQueueStorage]
+~~![SetQueueStorage][SetQueueStorage]
 
 
 Test the Function App
@@ -66,7 +66,7 @@ Now let's get the comment inside our message. Copy-Paste the code from the snipp
 The `#r` command are to add references to library we need that are already available in Azure. Save your changes.
 
 Clear the Logs windows by clicking the Clear button, and go back save another comment in the WebApp. You should have something similar to that.
-~
+~~
 ![Result][Result]
 
 Bonus
