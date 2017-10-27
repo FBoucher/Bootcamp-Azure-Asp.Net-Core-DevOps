@@ -1,9 +1,7 @@
 Goal
 ======
 
-Create an Azure Function that will be triggered when a new message is added to an Azure storage queue. 
-Validate in the debug window that the text for the message is the same as written in the Website textbox.
-
+Create an Azure Function that will be executed every 5 minutes to calculate the average to the values saved in the database and saving back the result. Validate in the debug window that the text for the message is the same as written in the Website textbox.
 
 Reference
 =========
@@ -44,14 +42,14 @@ Create The Data processing Azure Function
 
 (Because it's our first function, the portal will do a little tour of the interface)
 
-
 Configure the Function App
 --------------------------
 
 1. From the left section, select **Integrate**.
-1. Click on the *New* on the side of *Storage account connection*. 
+
+~1. Click on the *New* on the side of *Storage account connection*.
 1. Select the Storage account connection used in Step 2.
-1. Enter `my-gab-queue` or the name of the queue created in the previous step. 
+1. Enter `my-gab-queue` or the name of the queue created in the previous step.
 1. Click the Save button to keep your changes.
 
 ![SetQueueStorage][SetQueueStorage]
@@ -68,9 +66,8 @@ Now let's get the comment inside our message. Copy-Paste the code from the snipp
 The `#r` command are to add references to library we need that are already available in Azure. Save your changes.
 
 Clear the Logs windows by clicking the Clear button, and go back save another comment in the WebApp. You should have something similar to that.
-
+~
 ![Result][Result]
-
 
 Bonus
 =====
