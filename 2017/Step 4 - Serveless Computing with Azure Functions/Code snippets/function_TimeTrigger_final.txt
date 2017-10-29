@@ -1,0 +1,40 @@
+#r "System.Data"
+using System;
+using System.Configuration;
+using System.Data.SqlClient;
+public static async Task Run(TimerInfo myTimer, TraceWriter log)
+{
+    log.Info($"C# Timer trigger function executed at: {DateTime.Now}");  
+    var str = ConfigurationManager.ConnectionStrings["sqlConn"].ConnectionString;
+    using (SqlConnection conn = new SqlConnection(str))
+    {
+        var sum = 0;
+        var cnt = 0;
+        var avr = 0;
+        var best = 0;
+        conn.Open();
+        var sqlStr = "SELECT FivekmTime FROM [dbo].[Perso]";
+        using (SqlCommand cmd = new SqlCommand(sqlStr, conn))
+        {
+            var dataReader = await cmd.ExecuteReaderAsync();
+            while(dataReader.Read()){
+                var current = dataReader.GetInt32(0);
+                sum +=current;
+                if(current < best)
+                    best = current;
+                cnt++;
+            }
+            avr = (sum / cnt);
+            log.Info($"The average time to run 5km  is {avr} .");
+        }
+        var sqlInsert = $"INSERT INTO [dbo].[Statistic](BestTime, Average) VALUES ( {best} , {avr} )";
+        using(SqlCommand cmd  = new SqlCommand(sqlInsert, conn)){
+            var rows = cmd.ExecuteNonQuery();
+            log.Info($"{rows} rows were inserted");
+        }
+    }  
+}
+
+
+
+
