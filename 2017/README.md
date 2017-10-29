@@ -8,18 +8,11 @@ On **April 22, 2017**, all communities will come together once again in the fift
 
 You will find included in this repository all materials use during the demo so you can try it at home.
 
-## Who is [#OttCloudTech](https://www.meetup.com/fr-FR/msdevmtl/?chapter_analytics_code=UA-24676541-1)?
-<img align="left" src="https://secure.meetupstatic.com/photos/event/8/c/e/c/600_448176076.jpeg" width="200">[#OttCloudTech](https://www.meetup.com/OttCloudTech) is a Cloud User Group communities based in Ottawa. 
-
-This group is designed to bring together the Cloud development community in the Ottawa area to talk about challenges, roadmap, what we'd like to see in future releases, and overall user experience.
-
-Please visit our website and find out more about us and our incoming [meetup](https://www.meetup.com/OttCloudTech/).
-
 ## Our speakers for the Global Azure Bootcamp 2017
 
-- Hinault Donfack
-- Mathieu Benoit
-- Frank Boucher
+- Hinault Donfack (@hinault)
+- Mathieu Benoit (@mathieu-benoit)
+- Frank Boucher (@fboucher)
 
 ## Technology Stack for the Global Azure Bootcamp 2017
 
