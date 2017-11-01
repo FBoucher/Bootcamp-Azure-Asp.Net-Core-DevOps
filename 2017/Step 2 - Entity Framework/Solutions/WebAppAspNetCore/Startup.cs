@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using WebAppAspNetCore.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace WebAppAspNetCore
 {
@@ -22,6 +24,9 @@ namespace WebAppAspNetCore
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+
+            services.AddDbContext<BootCampContext>(options =>
+           options.UseSqlServer(Configuration.GetConnectionString("LocalDBConnectionStrings")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
