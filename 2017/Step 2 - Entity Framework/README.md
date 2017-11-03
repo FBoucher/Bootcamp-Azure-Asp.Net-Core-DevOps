@@ -84,6 +84,7 @@ namespace WebAppAspNetCore.Models
 
     }
 }
+```
 
 ### the ConnectionString
 
@@ -183,10 +184,9 @@ Hit F5 and PROFIT!!!
 
 
 [img1]: Media/img1.png "New Project"
-[img4]: Media/img4.png "Create new App Service"
-[img5]: Media/img5.png "Add App Service details"
-[img6]: Media/img6.png "Publish website"
-[img7]: Media/img7.png "Deployed website in browser"
-[img8]: Media/img8.png "Azure Resources screen"
-[img9]: Media/img9.png "Web app management screen"
-[img10]: Media/img10.png "Add a view"
+[img2]: Media/img2.png "Create new App Service"
+[img3]: Media/img3.png "Add App Service details"
+[img4]: Media/img4.png "Publish website"
+[img5]: Media/img5.png "Deployed website in browser"
+[img6]: Media/img6.png "Azure Resources screen"
+
