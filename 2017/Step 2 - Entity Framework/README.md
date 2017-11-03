@@ -40,6 +40,7 @@ namespace WebAppAspNetCore.Models
 
     }
 }
+```
 
 Add another new class called 'Statistic.cs'
 
@@ -55,6 +56,7 @@ namespace WebAppAspNetCore.Models
         public int AverageTime { get; set; }
     }
 }
+```
 
 ### The DBContext
 
@@ -96,9 +98,10 @@ Edit appsettings.json and add ConnectionString
     }
   },
   "ConnectionStrings": {
-    "LocalDBConnectionStrings": "Server=(localdb)\\mssqllocaldb;Database=MvcMovieContext-2;Trusted_Connection=True;MultipleActiveResultSets=true"
+    "LocalDBConnectionStrings": "Server=(localdb)\\mssqllocaldb;Database=BootCampDB;Trusted_Connection=True;MultipleActiveResultSets=true"
   }
 }
+```
 
 ### Register the context with dependency injection
 
@@ -114,26 +117,55 @@ Edit Startup.cs file  and add update the ConfigureServices method.
            options.UseSqlServer(Configuration.GetConnectionString("LocalDBConnectionStrings")));
         }
 
+```
+
 You need to add this references
 
 ```cs
 using WebAppAspNetCore.Models;
 using Microsoft.EntityFrameworkCore;
 
+```
+### Use Migrations to create and update database
 
+Click `Tools -> Nuget Package Manager  -> Package Manager Console` 
 
-### The View
+![img2][img2]
 
-Under the `/Views` folder, create a `Queue` folder [Add -> New Scaffolded item... -> MVC 5 View]. Add a new view called `CreateMessage`. Use the `Create` template, and select the model we just created `QueueMessageModel`. Click `Add` and then open the view for editing.
+Enter the following command
 
-![img10][img10]
+Add-Migration InitialMigration
 
-The only edit we need to make is to remove the "Back to List" `ActionLink` near the bottom of the page.
+The folder Migrations will be created in the root folder of your application 
 
-```html
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+![img3][img3]
+
+Enter the following command to update the database
+
+Update-Database
+
+### Enable Scaffolding
+
+Right clic on the folder Controllers. Select 'Add -> Controller'. In the dialogbox, clic on 'Full Dependencies'.
+
+![img4][img4]
+
+### CRUD With Entity Framework Core
+
+Right clic on the folder Controllers. Select 'Add -> Controller'.
+
+Select 'MVC Controller with views, using Entity Framework'
+
+![img5][img5]
+
+In the 'Add Controller' window, fill in information.
+
+Model Class : RunnerPerformance
+
+Data context class : BootCampContext
+
+![img6][img6]
+
 ```
 
 ### The Layout
@@ -142,93 +174,10 @@ In file `/Views/Shared/_Layout.cshtml`, uncomment the Create Message link. The l
 
 `<li>@Html.ActionLink("Create message", "CreateMessage", "Queue")</li>`
 
-### The Controller
-
-Under the `/Controllers` folder, add a new empty controller and name it `QueueController`. We'll create two actions to handle the `GET` and `POST` requests for our message form:
-
-```cs
-using System;
-using System.Web.Mvc;
-using WebApp.Models;
-
-namespace WebApp.Controllers
-{
-    public class QueueController : Controller
-    {
-        // GET: Queue/CreateMessage
-        public ActionResult CreateMessage()
-        {
-            return View();
-        }
-
-        // POST: Queue/CreateMessage
-        [HttpPost]
-        public ActionResult CreateMessage(QueueMessageModel message)
-        {
-            if (ModelState.IsValid)
-            {
-                // TODO: Insert add message to queue logic here
-
-                return RedirectToAction("Index", "Home");
-            }
-
-            return View(message);
-        }
-    }
-}
-```
 ### Build and Run!
 
 Hit F5 and PROFIT!!!
 
-## Deploying to Azure
-
-There's no point in building a glorious form like this unless you can show it off. We'll now do a deployment to an Azure App Service.
-
-### Visual Studio Publish
-
-The easiest way to deploy is by having Visual Studio publish it for you. During the course of the publish, you'll be asked for your credentials, and you'll have to fill in some additional deployment details.
-
-Start by right-clicking on the web project and clicking `Publish`. If you haven't logged in with your Microsoft account, you'll be asked for your credentials now. Once you are logged in, you should be presented with this screen:
-
-![img4][img4]
-
-Choose your subscription, and click `New` to setup your App Service:
-
-![img5][img5]
-
-The Web App Name field will be pre-populated with a globally unique name. Unless a Resource Group and App Service Plan have already been created under the subscription, they will need to be added now. Once all the fields have been filled in, click `Create` and our App Service will be provisioned.
-
-Once provisioning is complete, our publishing profile is complete and the Publish dialog will appear to guide us through the rest of the process:
-
-![img6][img6]
-
-At this point we should be able to click Publish, and wait a few minutes for the deploy to complete. We can keep an eye on the Output window to check the status. When the deployment is complete, our browser should open a new tab and display our cloud-powered website!
-
-![img7][img7]
-
-## Check out the portal
-
-Point a browser to https://portal.azure.com. Click on the Hamburger button and select `All resources` from the side menu. The new App Service should show up:
-
-![img8][img8]
-
-Clicking on the App Service will take us to a screen where you can manage and monitor your website.
-
-![img9][img9]
-
-## Addendum
-
-I ran into a couple issues during this deployment. First, stale credentials can prevent subscriptions from appearing when doing a publish. Follow these instruction to remedy: http://stackoverflow.com/questions/24507589/visual-studio-not-finding-my-azure-subscriptions
-
-I also ran into this error during deployment:
-
-```
-Warning : Retrying the sync because a socket error (10054) occurred
-Retrying operation 'Serialization' on object sitemanifest (sourcePath). Attempt 1 of 10.
-```
-
-This issue was resolved by adding an inbound rule to the firewall on port 8172 (TCP)
 
 # End
 

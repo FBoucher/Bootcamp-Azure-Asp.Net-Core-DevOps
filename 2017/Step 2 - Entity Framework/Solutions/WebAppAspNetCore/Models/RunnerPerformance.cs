@@ -17,7 +17,7 @@ namespace WebAppAspNetCore.Models
 
         [Required]
         [Display(Name= "Time performed by the runner")]
-        [Range(0, int.MaxValue, ErrorMessage = "Please enter a value bigger than {0}")]
+        [Range(0, int.MaxValue, ErrorMessage = "Please enter a value bigger than 0")]
         public int FivekmTime { get; set; }
 
     }
