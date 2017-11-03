@@ -167,7 +167,6 @@ Data context class : BootCampContext
 
 ![img6][img6]
 
-```
 
 ### The Layout
 
@@ -181,7 +180,6 @@ Hit F5 and PROFIT!!!
 
 
 # End
-
 
 [img1]: Media/img1.png "New Project"
 [img2]: Media/img2.png "Create new App Service"
