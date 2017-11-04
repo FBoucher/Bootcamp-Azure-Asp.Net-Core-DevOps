@@ -18,9 +18,12 @@ You will find included in this repository all materials use during the demo so y
 
 - [ASP.NET Core (MVC)](https://www.asp.net/core)
 - [Azure Web APP](https://azure.microsoft.com/en-ca/services/app-service/web/)
+- [Entity Framework Core](https://docs.microsoft.com/en-us/ef/#pivot=efcore)
+- [Azure SQL Database](https://azure.microsoft.com/en-us/services/sql-database/)
 - [Azure Resource Manager](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-overview)
 - [Azure Functions](https://azure.microsoft.com/en-us/services/functions/)
 - [Azure Application Insights](https://azure.microsoft.com/en-us/services/application-insights/)
+- [Visual Studio Team Services)](https://www.visualstudio.com/team-services/)
 
 ## What you will need before the bootcamp?
 Before the bootcamp, we encourage you to make sure you have all the requirement software so you can concentrate on learning and not running installations.  Make sure you get all the source code and install all the required software.
@@ -35,8 +38,19 @@ Make sure to have your account up and ready before the bootcamp.
 ### Visual Studio
 To use the demo code, you are required to install Microsoft Visual studio. The minimum version of Visual Studio to use with the demo code is 2017 version 15.4. [You can download a free trial of Visual Studio here](https://www.visualstudio.com/en-us/news/releasenotes/vs2017-relnotes)
 
+Visual Studio 2017 introduce the new installation experience. You can use it to customize your installation by selecting the feature sets—or workloads—that you want. Select ASP.NET and Web developement and select Azure development. 
+
+![img1][img1]
+
 ### Azure SDK - 2.9.6
-Make sure you have installed the [Microsoft Azure SDK for .NET - 2.9.6](https://www.microsoft.com/en-us/download/details.aspx?id=54289)
+If during installation you didn't select Azure development Workload, make sure you have installed [Microsoft Azure SDK for .NET - 2.9.6](https://www.microsoft.com/en-us/download/details.aspx?id=54289)
+
+### .NET Core 2.0
+If during installation you didn't select Azure development Workload, make sure you have installed [.NET Core SDK - 2.0](https://www.microsoft.com/net/download/windows)
 
 ### Azure PowerShell - 4.4.1 or later
 Make sure you have installed [Azure PowerShell v4.4.1](https://github.com/Azure/azure-powershell/releases/tag/v4.4.1-October2017) or later.
+
+# End
+
+[img1]: Media/img1.png "Visual Studio 2017 Installation"
