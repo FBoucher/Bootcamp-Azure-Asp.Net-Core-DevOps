@@ -47,6 +47,9 @@ namespace WebAppAspNetCore.Models
 
 ```
 
+ [Required], [Display] and [Range] attributes are DataAnnotations used to specify validation for individual fields in the data model.  
+
+
 Add another new class called 'Statistic.cs'
 
 ```cs
@@ -67,7 +70,7 @@ namespace WebAppAspNetCore.Models
 
 ### The DBContext
 
-In the `/Models` folder, add a new class called `BootCampContext.cs`:
+The Database Context (DBContext) is an important part of Entity Framework Core. It is a bridge between your domain or entity classes and the database.  In the `/Models` folder, add a new class called `BootCampContext.cs`:
 
 ```cs
 
@@ -97,7 +100,7 @@ namespace WebAppAspNetCore.Models
 
 ### The ConnectionString
 
-Edit appsettings.json and add ConnectionString
+The ConnectionString is the string with information to connect to database, like database name, username, password, provider, etc. Edit appsettings.json and add ConnectionString, below the 'Logging' section. Here is the complet code of appsettings.json file with the connectionString.
 
 ```json
 
@@ -115,9 +118,18 @@ Edit appsettings.json and add ConnectionString
 
 ```
 
-### Register the context with dependency injection
+### Register the DBContext with dependency injection
 
-Edit Startup.cs file  and add update the ConfigureServices method.
+EF Core supports using DbContext with a dependency injection container. Your DbContext type can be added to the ASP.NET Core service container by using AddDbContext<TContext>.
+
+Edit Startup.cs file and update the ConfigureServices method. Add this line of code after services.AddMvc().
+
+```cs
+services.AddDbContext<BootCampContext>(options =>
+           options.UseSqlServer(Configuration.GetConnectionString("LocalDBConnectionStrings")));
+```
+
+Here is the complet code of 'ConfigureServices' method. 
 
 ```cs
 
@@ -131,7 +143,7 @@ Edit Startup.cs file  and add update the ConfigureServices method.
 
 ```
 
-You need to add this references
+You need to add this references, at the top of Startup.cs file.
 
 ```cs
 
@@ -142,7 +154,9 @@ using Microsoft.EntityFrameworkCore;
 
 ### Use Migrations to create and update database
 
-Click `Tools -> Nuget Package Manager  -> Package Manager Console` 
+We are ready to access at our database with our application using Entity Framework Core. But, we haven't yet create our database with the corresponding tables. We don't need to do it manually. We can use Entity Framework Core to generate and update our database.
+
+To do it, we will use the 'Package Manager Console'. Click `Tools -> Nuget Package Manager  -> Package Manager Console` 
 
 ![img2][img2]
 
@@ -155,6 +169,9 @@ Enter the following command to update the database
 Update-Database
 
 ### Enable Scaffolding
+
+Scaffolding is a code generation framework for ASP.NET Web applications. 
+
 
 Right clic on the folder Controllers. Select 'Add -> Controller'. In the dialogbox, clic on 'Full Dependencies'.
 
@@ -179,19 +196,25 @@ Data context class : BootCampContext
 
 ### The Layout
 
-In file `/Views/Shared/_Layout.cshtml`, uncomment the Create Message link. The line should  look like this:
+In file `/Views/Shared/_Layout.cshtml`, under this line of code : '<li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>'
 
-`<li>@Html.ActionLink("Create message", "CreateMessage", "Queue")</li>`
+add link to RunnerPerformances section : `<li><a asp-area="" asp-controller="RunnerPerformances" asp-action="Index">RunnerPerformances</a></li>`
 
 ### Build and Run!
 
 Hit F5 and PROFIT!!!
 
+### Explore code generated for CRUD operation
+
+Explore the code generated in the file 'Controllers/RunnerPerformancesController.cs';
+
+Explorer the views generated in the folder 'Views/RunnerPerformances'
+
 ## End
 
 [img1]: Media/img1.png "New Project"
-[img2]: Media/img2.png "Create new App Service"
-[img3]: Media/img3.png "Add App Service details"
-[img4]: Media/img4.png "Publish website"
-[img5]: Media/img5.png "Deployed website in browser"
-[img6]: Media/img6.png "Azure Resources screen"
+[img2]: Media/img2.png "Migrations"
+[img3]: Media/img3.png "Create InitialMigration"
+[img4]: Media/img4.png "Scaffolding"
+[img5]: Media/img5.png "Add controller"
+[img6]: Media/img6.png "Add controller"
