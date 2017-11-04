@@ -1,12 +1,15 @@
 # Goal
+
 For this part of the bootcamp, our attendees will create a shiny new website in Visual Studio. We'll add the forms to made CRUD operations with Entity Framework Core.
 
-# Reference
+## Reference
+
 https://www.asp.net/mvc
 
-
 # Let's code!
-## Open website
+
+## Open the website
+
 Fire up Visual Studio. Click `File -> Open  -> Project/Solution` and navigate to the supplied solution in Step 0.
 
 ![img1][img1]
@@ -16,6 +19,7 @@ Fire up Visual Studio. Click `File -> Open  -> Project/Solution` and navigate to
 In the `/Models` folder, add a new class called `RunnerPerformance.cs`:
 
 ```cs
+
 using System;
 using System.ComponentModel.DataAnnotations;
 
@@ -40,11 +44,13 @@ namespace WebAppAspNetCore.Models
 
     }
 }
+
 ```
 
 Add another new class called 'Statistic.cs'
 
 ```cs
+
 using System;
 
 namespace WebAppAspNetCore.Models
@@ -56,6 +62,7 @@ namespace WebAppAspNetCore.Models
         public int AverageTime { get; set; }
     }
 }
+
 ```
 
 ### The DBContext
@@ -63,6 +70,7 @@ namespace WebAppAspNetCore.Models
 In the `/Models` folder, add a new class called `BootCampContext.cs`:
 
 ```cs
+
 using System;
 using Microsoft.EntityFrameworkCore;
 
@@ -84,13 +92,15 @@ namespace WebAppAspNetCore.Models
 
     }
 }
+
 ```
 
-### the ConnectionString
+### The ConnectionString
 
 Edit appsettings.json and add ConnectionString
 
 ```json
+
 {
   "Logging": {
     "IncludeScopes": false,
@@ -102,6 +112,7 @@ Edit appsettings.json and add ConnectionString
     "LocalDBConnectionStrings": "Server=(localdb)\\mssqllocaldb;Database=BootCampDB;Trusted_Connection=True;MultipleActiveResultSets=true"
   }
 }
+
 ```
 
 ### Register the context with dependency injection
@@ -123,21 +134,19 @@ Edit Startup.cs file  and add update the ConfigureServices method.
 You need to add this references
 
 ```cs
+
 using WebAppAspNetCore.Models;
 using Microsoft.EntityFrameworkCore;
 
 ```
+
 ### Use Migrations to create and update database
 
 Click `Tools -> Nuget Package Manager  -> Package Manager Console` 
 
 ![img2][img2]
 
-Enter the following command
-
-Add-Migration InitialMigration
-
-The folder Migrations will be created in the root folder of your application 
+Enter the following command: `Add-Migration InitialMigration`. The folder Migrations will be created in the root folder of your application.
 
 ![img3][img3]
 
@@ -178,8 +187,7 @@ In file `/Views/Shared/_Layout.cshtml`, uncomment the Create Message link. The l
 
 Hit F5 and PROFIT!!!
 
-
-# End
+## End
 
 [img1]: Media/img1.png "New Project"
 [img2]: Media/img2.png "Create new App Service"
@@ -187,4 +195,3 @@ Hit F5 and PROFIT!!!
 [img4]: Media/img4.png "Publish website"
 [img5]: Media/img5.png "Deployed website in browser"
 [img6]: Media/img6.png "Azure Resources screen"
-
