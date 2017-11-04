@@ -46,11 +46,11 @@ Visual Studio 2017 introduce the new installation experience. You can use it to 
 If during installation you didn't select Azure development Workload, make sure you have installed [Microsoft Azure SDK for .NET - 2.9.6](https://www.microsoft.com/en-us/download/details.aspx?id=54289)
 
 ### .NET Core - 2.0
-If during installation you didn't select Azure development Workload, make sure you have installed [.NET Core SDK - 2.0](https://www.microsoft.com/net/download/windows)
+If during installation you didn't select ASP.NET and Web developement Workload, make sure you have installed [.NET Core SDK - 2.0](https://www.microsoft.com/net/download/windows)
 
 ### Azure PowerShell - 4.4.1 or later
 Make sure you have installed [Azure PowerShell v4.4.1](https://github.com/Azure/azure-powershell/releases/tag/v4.4.1-October2017) or later.
 
 ## End
 
-[img1]: Media/img1.png "Visual Studio 2017 Installation"
+[img1]: Media/img1.PNG "Visual Studio 2017 Installation"

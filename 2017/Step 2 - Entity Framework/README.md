@@ -143,7 +143,7 @@ Here is the complet code of 'ConfigureServices' method.
 
 ```
 
-You need to add this references, at the top of Startup.cs file.
+You need to add this references. Copy and paste then at the top of Startup.cs file.
 
 ```cs
 
