@@ -26,7 +26,7 @@ namespace WebAppAspNetCore
             services.AddMvc();
 
             services.AddDbContext<BootCampContext>(options =>
-           options.UseSqlServer(Configuration.GetConnectionString("LocalDBConnectionStrings")));
+           options.UseSqlServer(Configuration.GetConnectionString("AzureDBConnectionStrings")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

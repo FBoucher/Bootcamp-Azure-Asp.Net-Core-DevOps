@@ -2,10 +2,6 @@
 
 Explore the database created by the application. Learn how to connect, explore and see some tools.
 
-## Reference
-
-https://www.asp.net/mvc
-
 # Let's code!
 
 ## Use Azure Portal to create Azure SQL Database 
@@ -48,7 +44,7 @@ Copy the connectionstring.
 
 ![img7][img7]
 
-Fire up Visual Studio. Click `File -> Open  -> Project/Solution` and navigate to the supplied solution in Step 0.
+Fire up Visual Studio. Click `File -> Open  -> Project/Solution` and navigate to the supplied solution in Step 2.
 
 Edit appsettings.json and add new parameter with the name 'AzureDBConnectionStrings' and paste your Azure connectionstring :
 
