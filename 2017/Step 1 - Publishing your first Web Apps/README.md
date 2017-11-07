@@ -13,77 +13,95 @@ Fire up Visual Studio. Click `File -> Open  -> Project/Solution` and navigate to
 
 ### The Model
 
-In the `/Models` folder, add a new class called `QueueMessageModel.cs`:
+In the `/Models` folder, add a new class called `RunnerPerformance.cs`:
 
 ```cs
 using System;
-using System.ComponentModel.DataAnnotations;
 
-namespace WebApp.Models
+namespace WebAppAspNetCore.Models
 {
-    public class QueueMessageModel
+    public class RunnerPerformance
     {
-        [Required]
-        public string Text { get; set; }
+        public int Id { get; set; }
+
+        public string FirstName { get; set; }
+
+        public string LastName { get; set; }
+
+        public int FivekmTime { get; set; }
+    }
+}
+```
+
+### Enable Scaffolding
+
+Scaffolding is a code generation framework for ASP.NET Web applications. 
+
+Right click on the folder Controllers. Select 'Add -> Controller'. In the dialogbox, click on 'Full Dependencies'.
+
+![img11][img11]
+
+### The Controller
+
+Right click on the folder Controllers. Select 'Add -> Controller'. 
+
+Select 'MVC Controller - Empty'. 
+
+![img10][img10]
+
+In the next window give name "RunnerPerformancesController".
+
+Select all the lines of code in this file, and replace with :
+
+```cs
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using WebAppAspNetCore.Models;
+
+namespace WebAppAspNetCore.Controllers
+{
+    public class RunnerPerformancesController : Controller
+    {
+
+       
+        public IActionResult Index()
+        {
+            var runnerPerformances = new List<RunnerPerformance>() {
+            new RunnerPerformance(){Id = 1, FirstName = "John", LastName = "Smith", FivekmTime = 15},
+            new RunnerPerformance(){Id = 2, FirstName = "Kevin", LastName = "Brady", FivekmTime = 10}
+            };
+
+            return View(runnerPerformances);
+        }
     }
 }
 ```
 
 ### The View
 
-Under the `/Views` folder, create a `Queue` folder [Add -> New Scaffolded item... -> MVC 5 View]. Add a new view called `CreateMessage`. Use the `Create` template, and select the model we just created `QueueMessageModel`. Click `Add` and then open the view for editing.
+Under the `/Views` folder, create a `RunnerPerformances` folder [Add -> New Scaffolded item... -> MVC View]. Add a new view called `Index`. Use the `List` template, and select the model we just created `RunnerPerformance`. Click `Add` and then open the view for editing.
 
 ![img10][img10]
 
-The only edit we need to make is to remove the "Back to List" `ActionLink` near the bottom of the page.
+The only edit we need to make is to remove the `ActionLink` for Edit, Details and Delete.
 
 ```html
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+       <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
 ```
 
 ### The Layout
 
-In file `/Views/Shared/_Layout.cshtml`, uncomment the Create Message link. The line should  look like this:
+In file `/Views/Shared/_Layout.cshtml`, under this line of code : '<li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>'
 
-`<li>@Html.ActionLink("Create message", "CreateMessage", "Queue")</li>`
+add link to RunnerPerformances section : `<li><a asp-area="" asp-controller="RunnerPerformances" asp-action="Index">RunnerPerformances</a></li>`
 
-### The Controller
-
-Under the `/Controllers` folder, add a new empty controller and name it `QueueController`. We'll create two actions to handle the `GET` and `POST` requests for our message form:
-
-```cs
-using System;
-using System.Web.Mvc;
-using WebApp.Models;
-
-namespace WebApp.Controllers
-{
-    public class QueueController : Controller
-    {
-        // GET: Queue/CreateMessage
-        public ActionResult CreateMessage()
-        {
-            return View();
-        }
-
-        // POST: Queue/CreateMessage
-        [HttpPost]
-        public ActionResult CreateMessage(QueueMessageModel message)
-        {
-            if (ModelState.IsValid)
-            {
-                // TODO: Insert add message to queue logic here
-
-                return RedirectToAction("Index", "Home");
-            }
-
-            return View(message);
-        }
-    }
-}
-```
 ### Build and Run!
 
 Hit F5 and PROFIT!!!
@@ -148,3 +166,4 @@ This issue was resolved by adding an inbound rule to the firewall on port 8172 (
 [img8]: Media/img8.png "Azure Resources screen"
 [img9]: Media/img9.png "Web app management screen"
 [img10]: Media/img10.png "Add a view"
+[img11]: Media/img11.png "Scaffolding"
