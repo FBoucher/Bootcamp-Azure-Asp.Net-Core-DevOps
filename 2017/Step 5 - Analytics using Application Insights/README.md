@@ -14,44 +14,25 @@ https://docs.microsoft.com/en-us/azure/application-insights/app-insights-analyti
 
 Right click on the web project : add -> Application Insights Telemetry...
 
-<img src="Media/img2.png" height="500">
+![img2][img2]
 
 Click on Start Free button
 
-<img src="Media/img1.png" width="500">
+![img1][img1]
 
-Notice that the file ApplicationInsights.config has been added to the project. Click on it to open the node.
-There are
+Notice that the file ApplicationInsights folder has been added to the project.
 
 ![img3][img3]
 
-Note in the web.config file, you should find the following section:
+Note in the appsettings.json file, you should find the a new section:
 
-  ```xml
-  <httpModules>
-      <add name="ApplicationInsightsWebTracking" type="Microsoft.ApplicationInsights.Web.ApplicationInsightsHttpModule, Microsoft.AI.Web"/>
-  </httpModules>
+  ```json
+
+  "ApplicationInsights": {
+    "InstrumentationKey": "509d0f55-xxxx-4d24-xxxx-3d0847696552"
+  }
+
   ```
-Now we will add the instrumentation key int the web.config file. We do this so that we can change the key depending on the environment we deploy in. Application Insights will take the key in the Web.config file first.
-Add this line in the web.config file:
-
-```xml
-
-<add key="ApplicationInsightInstrumentationKey" value="INSTRUMENTAIONKEY" />
-
-```
-
-The instrumentation key is in the ApplicationInsights.config, at the bottom:
-
-```xml
-
-<InstrumentationKey>INSTRUMENTAIONKEY</InstrumentationKey>
-
-```
-
-Copy and paste the Guid in the web.config file in value of the newly added parameter.
-
-Run the applicaiton (even locally) and you can start seeing some metrics in Application Insights (either in Visual Studio or in the Azure Portal)
 
 ## Add code to track javascript calls
 
@@ -93,7 +74,7 @@ In this file, copy and paste the definition of a custom excection `ServiceExcept
         public ServiceException() : base("Service Exception") { }
         public ServiceException(Exception inner) : base("Service Exception", inner) { }
     }
- 
+
     public class SomeService
     {
         public static void ThrowAnExceptionPlease()
@@ -134,6 +115,7 @@ now in the layout file `views\Shared\_Layout.cshtml`, after line 37, add;
 ```
 
 Now run the applicaiton and click on the 'Service' link on the top. You should see and exception stack.
+
 Back to visual studio, under the ApplicationInsights.config file, click on `Search debug session telemetry' and you should see the failed request along with the details.
 
 ## Tracking Handled Exceptions
@@ -143,7 +125,7 @@ Back to the Index method of the `ServiceController`, replace the code of the met
 ```cs
 
             try
-            {                
+            {
                 Services.SomeService.ThrowAnExceptionPlease();
             }
             catch(Exception ex)
@@ -166,6 +148,8 @@ using Microsoft.ApplicationInsights;
 Run the application again and click on the `Service` menu item. You should not see the exception stack at this point.
 
 On the Azure Portal, click on Metric Explorer and then add metrics to add the exceptions. We should be able to see the details of the exceptions.
+
+![ExceptionMetric][ExceptionMetric]
 
 ## Explore Application Map to track dependencies
 
@@ -224,55 +208,57 @@ Build and run the application and click on the Service menu item. You can also c
 
 Go in the Portal and click on the App Insights instance then Application Map. You should be able to see the calls the newly created method.
 
-## Track custom events in the function
 
-Open the function that we created in the step 3
-First, we need to add a dependency to Application Insights SDK.
+## Track Event and Metrics
 
-We must add a new file to the function; `project.json` and copy the follwoing content in it.
+You can track many different things other then exceptions. Let's add some metric when we create new runners entry.
 
-```json
+First, go in the SomeService class and add the following method:
 
-{
-  "frameworks": {
-    "net46":{
-      "dependencies": {
-        "Microsoft.ApplicationInsights": "2.2.0"
-      }
+```cs
+
+    public static void TrackCustomStuff(int fivekmTime) {
+        var telemetry = new TelemetryClient();
+        var properties = new Dictionary<string, string> { { "Run", "RunName" }, { "Jog", "Race" } };
+        var measurements = new Dictionary<string, double> { { "RunTime", fivekmTime }, { "Opponents", 1 } };
+        telemetry.TrackEvent("RunCompleted", properties, measurements);
+        telemetry.TrackMetric("RunTime", fivekmTime, properties);
     }
-  }
-}
 
 ```
 
-Now, in the `run.csx` file, add the following method and do not forget to put in your instrumentation key.
+This method will help us to track a custom Event and Metric. Now let's add the call to that method in the RunnerPerformancesController in the Create Action. After adding the call the code should look like:
 
 ```cs
 
-public static TelemetryClient AppInsight()
-
-{
-     
-	var client = new TelemetryClient();
-     
-	client.InstrumentationKey = "INSTRUMENTATIONKEY";
-     
-	return client;
-
-}
-
-```
-
-At the end of the main method, add the call to add an event:
-
-```cs
-
-AppInsight().TrackEvent("MessagePost");
+    public async Task<IActionResult> Create([Bind("Id,FirstName,LastName,FivekmTime")] RunnerPerformance runnerPerformance)
+        {
+            if (ModelState.IsValid)
+            {
+                Services.SomeService.TrackCustomStuff(runnerPerformance.FivekmTime);
+                _context.Add(runnerPerformance);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+            return View(runnerPerformance);
+        }
 
 ```
 
-Now, let's send a message using the web app to trigger the function and check in the metrics explorer that we actually logged a new custom event called `MessagePost`
+It's now time to test it. Deploy your application, and create a few new result.  Once your done, go back in the Azure portal, in the Application Insight blade, open a Metrics Explorer blade, add a new chart, and select Events
+
+![ExceptionMetric][ExceptionMetric]
+
+After a few minutes (around two), you should see your new metric populated.
+
+> *Note*
+> Your custom metric might take several minutes to appear in the list of available metrics.
+
+![Results][Results]
+
 
 [img1]: Media/img1.png
-[img3]: Media/img3.png 
+[img3]: Media/img3.png
 [img4]: Media/img4.png
+[ExceptionMetric]: Media/ExceptionMetric.png "Add an exception Metric"
+[Results]: Media/Results.png "Results"
