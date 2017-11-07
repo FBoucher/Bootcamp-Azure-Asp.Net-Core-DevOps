@@ -69,6 +69,17 @@ Bonus
 
 Try to do the same thing from a Visual Studio Function Project.
 
+![NewProject][NewProject]
+
+Then to add a new Function, right mouse click on the project node in Solution Explorer, then choose Add > New Item. Choose Azure Function from the dialog box.
+
+![AddFunction][AddFunction]
+
+Select the type of function you need...
+
+One all the code is in place hit F5 to run it locally.
+
+![DebugMode][DebugMode]
 
 [SearchFunctionApp]: Media/SearchFunctionApp.png "Search Function App"
 [CreateFunctionApp]: Media/CreateFunctionApp.png "Create a Function App"
@@ -76,3 +87,6 @@ Try to do the same thing from a Visual Studio Function Project.
 [ShowApplicationSettings]: Media/ShowApplicationSettings.png "Set Queue Storage"
 [Result]: Media/Result.png "See Logs"
 [connectionstring]: Media/connectionstring.png "Connectionstring available in the portal"
+[NewProject]: Media/NewProject.png "Create a new Function Type Project"
+[AddFunction]: Media/AddFunction.png "Add a new Function"
+[DebugMode]: Media/DebugMode.png "Run the project in Debug"
