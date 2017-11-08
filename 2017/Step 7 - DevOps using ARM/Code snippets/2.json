@@ -1,34 +1,56 @@
 {
     "templateFile": {
         "variables": {
-            "appServicePlanFunction": {
-                "name": "[concat(variables('lowerCaseAppName'),'-sp-function')]",
-                "location": "[variables('defaultResourceLocation')]",
-                "sku": {
-                    "name": "Y1",
-                    "tier": "Dynamic",
-                    "size": "Y1",
-                    "family": "Y",
-                    "capacity": 0
-                }
-            },
-            "functionApp": {
-                "name": "[concat(variables('lowerCaseAppName'),'-functionapp')]",
-                "location": "[variables('defaultResourceLocation')]",
-                "kind": "functionapp",
-                "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('appServicePlanFunction').name)]"
+            "appInsights": {
+                "name": "[concat(variables('lowerCaseAppName'),'-appinsights')]",
+                "location": "East US",
+                "kind": "web",
+                "LinkedApplicationId": "[resourceId('Microsoft.Web/sites', variables('webApp').name)]"
             }
         },
         "resources": [
             {
-                "comments": "AppService Plan - Function",
-                "type": "Microsoft.Web/serverfarms",
-                "name": "[variables('appServicePlanFunction').name]",
-                "apiVersion": "2016-09-01",
-                "location": "[variables('appServicePlanFunction').location]",
-                "sku": "[variables('appServicePlanFunction').sku]",
+                "comments": "WebApp",
+                "type": "Microsoft.Web/sites",
+                "name": "[variables('webApp').name]",
+                "apiVersion": "2015-08-01",
+                "location": "[variables('webApp').location]",
+                "kind": "[variables('webApp').kind]",
                 "tags": {},
-                "properties": {}
+                "properties": {
+                    "serverFarmId": "[variables('webApp').serverFarmId]"
+                },
+                "dependsOn": [
+                    "[variables('webApp').serverFarmId]"
+                ],
+                "resources": [
+                    {
+                        "type": "config",
+                        "name": "appsettings",
+                        "apiVersion": "2015-08-01",
+                        "properties": {
+                            "appInsightInstrumentationKey": "[reference(resourceId('Microsoft.Insights/components', variables('appInsights').name), '2014-04-01').InstrumentationKey]"
+                        },
+                        "dependsOn": [
+                            "[resourceId('Microsoft.Web/sites', variables('webApp').name)]"
+                        ]
+                    }
+                ]
+            },
+            {
+                "comments": "Application Insights",
+                "name": "[variables('appInsights').name]",
+                "type": "Microsoft.Insights/components",
+                "apiVersion": "2014-04-01",
+                "location": "[variables('appInsights').location]",
+                "kind": "[variables('appInsights').kind]",
+                "tags": {},
+                "properties": {
+                    "ApplicationId": "[variables('appInsights').linkedApplicationId]"
+                },
+                "dependsOn": [
+                    "[variables('appInsights').linkedApplicationId]"
+                ]
             }
         ]
     }
