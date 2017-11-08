@@ -33,7 +33,6 @@ namespace WebAppAspNetCore.Models
 }
 ```
 
-
 Add another new class called 'Statistic.cs'
 
 ```cs
@@ -66,7 +65,7 @@ Right click on the folder Controllers. Select 'Add -> Controller'.
 
 Select 'MVC Controller - Empty'. 
 
-![img11][img11]
+![img11][img12]
 
 In the next window give name "RunnerPerformancesController".
 
@@ -169,21 +168,7 @@ Clicking on the App Service will take us to a screen where you can manage and mo
 
 ![img9][img9]
 
-## Addendum
-
-I ran into a couple issues during this deployment. First, stale credentials can prevent subscriptions from appearing when doing a publish. Follow these instruction to remedy: http://stackoverflow.com/questions/24507589/visual-studio-not-finding-my-azure-subscriptions
-
-I also ran into this error during deployment:
-
-```
-Warning : Retrying the sync because a socket error (10054) occurred
-Retrying operation 'Serialization' on object sitemanifest (sourcePath). Attempt 1 of 10.
-```
-
-This issue was resolved by adding an inbound rule to the firewall on port 8172 (TCP)
-
 # End
-
 
 [img1]: Media/img1.png "New Project"
 [img4]: Media/img4.png "Create new App Service"
@@ -194,3 +179,4 @@ This issue was resolved by adding an inbound rule to the firewall on port 8172 (
 [img9]: Media/img9.png "Web app management screen"
 [img10]: Media/img10.png "Add a view"
 [img11]: Media/img11.png "Scaffolding"
+[img12]: Media/img12.png "Add Scaffold"
