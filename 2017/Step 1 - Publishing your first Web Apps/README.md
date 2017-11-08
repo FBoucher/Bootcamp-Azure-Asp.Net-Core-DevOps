@@ -117,9 +117,17 @@ The only edit we need to make is to remove the `ActionLink` for Edit, Details an
 
 ### The Layout
 
-In file `/Views/Shared/_Layout.cshtml`, under this line of code : '<li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>'
+In file `/Views/Shared/_Layout.cshtml`, under this line of code : 
 
-add link to RunnerPerformances section : `<li><a asp-area="" asp-controller="RunnerPerformances" asp-action="Index">RunnerPerformances</a></li>`
+```html
+<li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
+```
+
+add link to RunnerPerformances section :
+
+```html
+<li><a asp-area="" asp-controller="RunnerPerformances" asp-action="Index">RunnerPerformances</a></li>
+```
 
 ### Build and Run!
 
