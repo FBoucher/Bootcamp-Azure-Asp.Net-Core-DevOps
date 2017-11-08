@@ -38,7 +38,7 @@ Make sure to have your account up and ready before the bootcamp.
 ### Visual Studio
 To use the demo code, you are required to install Microsoft Visual studio. The minimum version of Visual Studio to use with the demo code is 2017 version 15.4. [You can download a free trial of Visual Studio here](https://www.visualstudio.com/en-us/news/releasenotes/vs2017-relnotes)
 
-Visual Studio 2017 introduce the new installation experience. You can use it to customize your installation by selecting the feature sets—or workloads—that you want. Select ASP.NET and Web developement and select Azure development. 
+Visual Studio 2017 introduce the new installation experience. You can use it to customize your installation by selecting the feature setsï¿½or workloadsï¿½that you want. Select ASP.NET and Web developement and select Azure development. 
 
 ![img1][img1]
 
@@ -50,6 +50,9 @@ If during installation you didn't select ASP.NET and Web developement Workload, 
 
 ### Azure PowerShell - 4.4.1 or later
 Make sure you have installed [Azure PowerShell v4.4.1](https://github.com/Azure/azure-powershell/releases/tag/v4.4.1-October2017) or later.
+
+### Git
+Make sure to have Git installed. You can have nice GUI but the console is the only requirement. you can pick the version for your OS on [Git](https://git-scm.com/downloads)
 
 ## End
 
