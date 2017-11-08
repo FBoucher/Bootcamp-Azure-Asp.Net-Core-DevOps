@@ -2,8 +2,8 @@
 For this part of the bootcamp, our attendees will create a shiny new website in Visual Studio. We'll add a form to capture a message submitted by the user. Finally, they'll deploy to Azure App Service so the entire world can marvel at their amazing websites!
 
 # Reference
-https://www.asp.net/mvc
 
+https://docs.microsoft.com/en-us/aspnet/core/
 
 # Let's code!
 ## Open website

@@ -4,7 +4,7 @@ For this part of the bootcamp, our attendees will create a shiny new website in 
 
 ## Reference
 
-https://www.asp.net/mvc
+https://docs.microsoft.com/en-us/ef/core/index
 
 # Let's code!
 
