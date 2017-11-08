@@ -33,6 +33,25 @@ namespace WebAppAspNetCore.Models
 }
 ```
 
+
+Add another new class called 'Statistic.cs'
+
+```cs
+
+using System;
+
+namespace WebAppAspNetCore.Models
+{
+    public class Statistic
+    {
+        public int BestTime { get; set; }
+
+        public int AverageTime { get; set; }
+    }
+}
+
+```
+
 ### Enable Scaffolding
 
 Scaffolding is a code generation framework for ASP.NET Web applications. 
