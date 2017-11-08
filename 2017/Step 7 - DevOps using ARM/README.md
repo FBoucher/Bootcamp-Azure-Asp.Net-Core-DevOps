@@ -39,5 +39,4 @@ Head to :
 - In the Azure portal, check out the Azure resources your just deployed
 - In Visual Studio, use the "JSON Outline" View to edit an ARM Template --> graphical editor.
 
-
 # End
