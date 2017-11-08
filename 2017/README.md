@@ -1,20 +1,22 @@
-# Global Azure Bootcamp 2017 - (special edition), Canada
+# Azure Bootcamp Asp.Net Core & DevOps
 
-<img align="left" src="https://global.azurebootcamp.net/wp-content/uploads/2016/09/2017-logo-250x169.png" width="250">
+<img align="left" src="Media/AzureBootCampQuebec.png" width="250">
 
 All around the world user groups and communities want to learn about Azure and Cloud Computing!
 
-On **April 22, 2017**, all communities will come together once again in the fifth great [Global Azure Bootcamp](https://global.azurebootcamp.net/) event!
+On **November 9, 2017**, Quebec communitie will come together for a special edition of an Azure Bootcamp event!
 
 You will find included in this repository all materials use during the demo so you can try it at home.
 
-## Our speakers for the Global Azure Bootcamp 2017
+## Our speakers for the Azure Bootcamp Asp.Net Core & DevOps 2017
 
 - Hinault Donfack (@hinault)
 - Mathieu Benoit (@mathieu-benoit)
 - Frank Boucher (@fboucher)
 
-## Technology Stack for the Global Azure Bootcamp 2017
+You can find the complete shedule [here](./Schedule.md).
+
+## Technology Stack for the Azure Bootcamp Asp.Net Core & DevOps 2017
 
 - [ASP.NET Core (MVC)](https://www.asp.net/core)
 - [Azure Web APP](https://azure.microsoft.com/en-ca/services/app-service/web/)
