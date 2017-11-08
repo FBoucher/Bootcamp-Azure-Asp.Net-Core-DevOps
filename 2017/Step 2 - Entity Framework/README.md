@@ -10,13 +10,15 @@ https://www.asp.net/mvc
 
 ## Open the website
 
-Fire up Visual Studio. Click `File -> Open  -> Project/Solution` and navigate to the supplied solution in Step 0.
+Fire up Visual Studio. Click `File -> Open  -> Project/Solution` and navigate to the supplied solution in Step 1.
 
 ![img1][img1]
 
-### The Model
+Delete 'RunnerPerformancesController.cs' file in the folder 'Controllers' and delete the folder 'RunnerPerformances' in the folder 'Views'.
 
-In the `/Models` folder, add a new class called `RunnerPerformance.cs`:
+### Validation with DataAnnotations
+
+In the `/Models` folder, change code in `RunnerPerformance.cs` with :
 
 ```cs
 
@@ -48,25 +50,6 @@ namespace WebAppAspNetCore.Models
 ```
 
  [Required], [Display] and [Range] attributes are DataAnnotations used to specify validation for individual fields in the data model.  
-
-
-Add another new class called 'Statistic.cs'
-
-```cs
-
-using System;
-
-namespace WebAppAspNetCore.Models
-{
-    public class Statistic
-    {
-        public int BestTime { get; set; }
-
-        public int AverageTime { get; set; }
-    }
-}
-
-```
 
 ### The DBContext
 
@@ -100,7 +83,9 @@ namespace WebAppAspNetCore.Models
 
 ### The ConnectionString
 
-The ConnectionString is the string with information to connect to database, like database name, username, password, provider, etc. Edit appsettings.json and add ConnectionString, below the 'Logging' section. Here is the complet code of appsettings.json file with the connectionString.
+The ConnectionString is the string with information to connect to database, like database name, username, password, provider, etc. 
+
+We will first user a LocalDB database. Edit appsettings.json and add ConnectionString, below the 'Logging' section. Here is the complet code of appsettings.json file with the connectionString.
 
 ```json
 
@@ -168,18 +153,10 @@ Enter the following command to update the database
 
 Update-Database
 
-### Enable Scaffolding
-
-Scaffolding is a code generation framework for ASP.NET Web applications. 
-
-
-Right clic on the folder Controllers. Select 'Add -> Controller'. In the dialogbox, clic on 'Full Dependencies'.
-
-![img4][img4]
 
 ### CRUD With Entity Framework Core
 
-Right clic on the folder Controllers. Select 'Add -> Controller'.
+Right click on the folder Controllers. Select 'Add -> Controller'.
 
 Select 'MVC Controller with views, using Entity Framework'
 
@@ -192,13 +169,6 @@ Model Class : RunnerPerformance
 Data context class : BootCampContext
 
 ![img6][img6]
-
-
-### The Layout
-
-In file `/Views/Shared/_Layout.cshtml`, under this line of code : '<li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>'
-
-add link to RunnerPerformances section : `<li><a asp-area="" asp-controller="RunnerPerformances" asp-action="Index">RunnerPerformances</a></li>`
 
 ### Build and Run!
 

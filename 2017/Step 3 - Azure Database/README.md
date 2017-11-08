@@ -32,7 +32,7 @@ Click on 'Add client IP' to allow access to Azure services at your client IP add
 
 ![img5][img5]
 
-Close the 'Firewall settings' Windows.
+Close the 'Firewall settings' window.
 
 ### ConnectionString
 
@@ -96,12 +96,27 @@ Right-click on the web project and click on `Publish`. Select 'Microsoft Azure A
 
 ![img8][img8]
 
-In the next Windows, select your Subscription and your Azure App Service.
+In the next window, select your Subscription and your Azure App Service.
 
 ![img9][img9]
 
 Click Ok and wait a few minutes for the deploy to complete. We can keep an eye on the Output window to check the status. When the deployment is complete, our browser should open a new tab and display our cloud-powered website!
 
+### Query Editor
+
+Navigate to your Azure SQL Database. In the 'Overview' window, click on 'Tools' in the 'tools box' on the top.
+
+Click on 'Query editor preview'. Click on 'Login' in the 'Query Editor' Window. Enter your Login and Password.
+
+![img10][img10]
+
+Type your SQL command inside the editor and click Run.
+
+ ```sql
+ select * from RunnerPerformances
+```
+
+![img11][img11]
 
 ## End
 
@@ -114,3 +129,5 @@ Click Ok and wait a few minutes for the deploy to complete. We can keep an eye o
 [img7]: Media/img7.png 
 [img8]: Media/img8.png 
 [img9]: Media/img9.png 
+[img10]: Media/img10.png 
+[img11]: Media/img11.png 
