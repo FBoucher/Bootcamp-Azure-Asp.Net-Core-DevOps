@@ -66,7 +66,7 @@ Right click on the folder Controllers. Select 'Add -> Controller'.
 
 Select 'MVC Controller - Empty'. 
 
-![img10][img10]
+![img11][img11]
 
 In the next window give name "RunnerPerformancesController".
 
