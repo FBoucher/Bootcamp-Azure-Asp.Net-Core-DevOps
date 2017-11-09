@@ -81,6 +81,10 @@ One all the code is in place hit F5 to run it locally.
 
 ![DebugMode][DebugMode]
 
+To complete this bonus, let's change your deployment setting from `Release` to `Debug`, hit F5, place a breakpoint and enjoy your debugging session! ;)
+
+## End
+
 [SearchFunctionApp]: Media/SearchFunctionApp.png "Search Function App"
 [CreateFunctionApp]: Media/CreateFunctionApp.png "Create a Function App"
 [CreateDataFunction]: Media/CreateDataFunction.png "Create Data processing Function"
