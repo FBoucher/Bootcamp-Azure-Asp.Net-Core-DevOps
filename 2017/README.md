@@ -1,6 +1,6 @@
 # Azure Bootcamp Asp.Net Core & DevOps
 
-<img align="left" src="Media/AzureBootCampQuebec.png" width="250">
+<img align="left" src="Media/AzureBootCampQuebec_2.png" width="250">
 
 All around the world user groups and communities want to learn about Azure and Cloud Computing!
 
