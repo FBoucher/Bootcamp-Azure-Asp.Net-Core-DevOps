@@ -258,6 +258,7 @@ After a few minutes (around two), you should see your new metric populated.
 
 
 [img1]: Media/img1.png
+[img2]: Media/img2.png
 [img3]: Media/img3.png
 [img4]: Media/img4.png
 [ExceptionMetric]: Media/ExceptionMetric.png "Add an exception Metric"
