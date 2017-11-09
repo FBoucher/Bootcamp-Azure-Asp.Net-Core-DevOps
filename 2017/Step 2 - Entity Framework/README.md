@@ -149,10 +149,9 @@ Enter the following command: `Add-Migration InitialMigration`. The folder Migrat
 
 ![img3][img3]
 
-Enter the following command to update the database
+Enter the following command to update the database:
 
-Update-Database
-
+`Update-Database`
 
 ### CRUD With Entity Framework Core
 
