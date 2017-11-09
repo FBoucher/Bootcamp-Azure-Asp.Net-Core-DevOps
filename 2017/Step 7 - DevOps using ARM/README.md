@@ -7,12 +7,9 @@ Automate the creation of the resources required by the application in Azure usin
 # Reference
 * https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-overview
 * https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-manager-create-first-template
-
-# Some background
-Use the following links to learn or refresh your memory about Azure Resource Manager templates.
-Head to :
-* https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-manager-create-first-template
 * https://docs.microsoft.com/en-us/azure/azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy
+* https://docs.microsoft.com/en-us/cli/azure/
+* https://docs.microsoft.com/en-us/powershell/azure/overview
 
 # Let's code!
 ## Login in to Azure and select the right subscription
@@ -34,9 +31,10 @@ Head to :
 
 0. Ask to save template file and call `& '.\Solutions\Deployment\Deploy-AzureResourceGroup.ps1' -ResourceGroupLocation 'East US 2'`
 
-# Further steps
+# Bonus
 
-- In the Azure portal, check out the Azure resources your just deployed
-- In Visual Studio, use the "JSON Outline" View to edit an ARM Template --> graphical editor.
+- In the Azure portal, check out the Azure resources you just deployed and verify the **Deployments** blade of your resource group
+- In Visual Studio, use the **JSON Outline** View to edit an ARM Template --> graphical editor.
+- In the Azure portal, go to your resource group just deployed and click on the **Locks** blade. Here add a `DoNotDelete` lock (**Lock type** = `Delete`). It's one of the good practice to protect your Azure resources, especially for Production. Don't forget you could automate this by PowerShell for example ;)
 
 # End
