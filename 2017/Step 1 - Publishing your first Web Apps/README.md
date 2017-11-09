@@ -168,6 +168,13 @@ Clicking on the App Service will take us to a screen where you can manage and mo
 
 ![img9][img9]
 
+Bonus
+=====
+
+Try a remote debugging session from whithin Visual Studio:
+
+https://blogs.msdn.microsoft.com/benjaminperkins/2016/09/22/remote-debug-your-azure-app-service-web-app/
+
 # End
 
 [img1]: Media/img1.png "New Project"

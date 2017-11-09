@@ -180,18 +180,11 @@ Explore the code generated in the file 'Controllers/RunnerPerformancesController
 
 Explorer the views generated in the folder 'Views/RunnerPerformances'
 
-Bonus
-=====
-
-Try a remote debugging session from whithin Visual Studio:
-
-https://blogs.msdn.microsoft.com/benjaminperkins/2016/09/22/remote-debug-your-azure-app-service-web-app/
-
 ## End
 
 [img1]: Media/img1.png "New Project"
 [img2]: Media/img2.png "Migrations"
 [img3]: Media/img3.png "Create InitialMigration"
-[img4]: Media/img4.png "Scaffolding"
-[img5]: Media/img5.png "Add controller"
+[img4]: Media/img4.png "Add dependencies for Scaffolding"
+[img5]: Media/img5.png "Add Scaffold"
 [img6]: Media/img6.png "Add controller"
