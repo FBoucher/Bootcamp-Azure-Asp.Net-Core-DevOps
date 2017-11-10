@@ -1,0 +1,6 @@
+"appInsights": {
+  "name": "[concat(variables('lowerCaseAppName'),'-appinsights')]",
+  "location": "East US",
+  "kind": "web",
+  "LinkedApplicationId": "[resourceId('Microsoft.Web/sites', variables('webApp').name)]"
+}

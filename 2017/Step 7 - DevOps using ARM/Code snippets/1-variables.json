@@ -1,0 +1,18 @@
+"uniqueString": "[uniqueString(subscription().id, resourceGroup().id)]",
+"defaultResourceLocation": "[resourceGroup().location]",
+"lowerCaseAppName": "[toLower( concat(parameters('appName'), variables('uniqueString')) )]",
+"appServicePlanWeb": {
+  "name": "[concat(variables('lowerCaseAppName'),'-sp-web')]",
+  "location": "[variables('defaultResourceLocation')]",
+  "sku": {
+    "name": "F1",
+    "tier": "Free",
+    "capacity": 1
+  }
+},
+"webApp": {
+  "name": "[concat(variables('lowerCaseAppName'),'-webapp')]",
+  "location": "[variables('defaultResourceLocation')]",
+  "kind": "app",
+  "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('appServicePlanWeb').name)]"
+}

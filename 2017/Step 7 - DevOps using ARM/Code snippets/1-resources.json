@@ -1,0 +1,26 @@
+{
+  "comments": "AppService Plan - Web",
+  "type": "Microsoft.Web/serverfarms",
+  "name": "[variables('appServicePlanWeb').name]",
+  "apiVersion": "2016-09-01",
+  "location": "[variables('appServicePlanWeb').location]",
+  "sku": "[variables('appServicePlanWeb').sku]",
+  "tags": {},
+  "properties": {},
+  "dependsOn": []
+},
+{
+  "comments": "WebApp",
+  "type": "Microsoft.Web/sites",
+  "name": "[variables('webApp').name]",
+  "apiVersion": "2015-08-01",
+  "location": "[variables('webApp').location]",
+  "kind": "[variables('webApp').kind]",
+  "tags": {},
+  "properties": {
+    "serverFarmId": "[variables('webApp').serverFarmId]"
+  },
+  "dependsOn": [
+    "[variables('webApp').serverFarmId]"
+  ]
+}
