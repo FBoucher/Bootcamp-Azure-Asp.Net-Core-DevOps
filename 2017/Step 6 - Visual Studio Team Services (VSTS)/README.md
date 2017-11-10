@@ -40,7 +40,7 @@ For the bootcamp our Build process will also be deploying our solution in Azure.
 
 ### Configuration Time
 
-Next we need to configure our deployment. Select your subscription (you will probably need some authorization), the App Service Name you deployed earlier. Set the Package folder to `$(build.artifactstagingdirectory)\WebApp.zip`. This value can be found in the **Build solution** task.
+Next we need to configure our deployment. On this **Azure App Service Deploy:** task, select your subscription (you will probably need some authorization), the App Service Name you deployed earlier. Set the Package folder to `$(build.artifactstagingdirectory)\WebApp.zip`. This value can be found in the **Build solution** task.
 
 > **Note**
 > Be sure to select **Hosted VS2017** as build Agent in the **Phase 1** task.
