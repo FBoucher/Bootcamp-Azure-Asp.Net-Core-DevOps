@@ -94,7 +94,7 @@ In the `Index` method, add the following line of code:
 
 ```
 
-Open the related view file  `views\service\index.cshtml` and add
+Create the related view file  `views\service\index.cshtml` and add
 
 ```cshtml
 
