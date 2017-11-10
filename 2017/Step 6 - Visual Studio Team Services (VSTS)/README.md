@@ -40,14 +40,14 @@ For the bootcamp our Build process will also be deploying our solution in Azure.
 
 ### Configuration Time
 
-Go in the Triggers Tab, and enable the trigger of the Continuous Integration. This will fire our build definition when some code is pushed to our VSTS repository.
-
-![EnableTrigger][EnableTrigger]
-
-Next we need to configure our deployment. Select your subscription (you will probably need some authorization), The App Service Name. Set the Package folder to `$(build.artifactstagingdirectory)\WebApp.zip`.  This value can be found in the build task.
+Next we need to configure our deployment. Select your subscription (you will probably need some authorization), the App Service Name you deployed earlier. Set the Package folder to `$(build.artifactstagingdirectory)\WebApp.zip`. This value can be found in the **Build solution** task.
 
 > **Note**
-> Be sure to select **Hosted VS2017** as build Agent.
+> Be sure to select **Hosted VS2017** as build Agent in the **Phase 1** task.
+
+Then go to the Triggers Tab, and enable the trigger of the Continuous Integration. This will fire our build definition when some code is pushed to our VSTS repository.
+
+![EnableTrigger][EnableTrigger]
 
 When you are done, click on the *Save & Queue*.  A build agent should start building your solution.  If everything works correctly, you  **Build succeeded**.
 
@@ -61,6 +61,7 @@ VSTS contains a very good editor so let fix this online. As an option, you could
 
 In our case, we will fix it online. Navigate to the code in find the `HomeController.cs` file. Edit the file to fix the Error. Once you are done, Commit your work and add a comment.  This should trigger our build, and after few minutes, you should have your fix live in Azure.
 
+## End
 
 [CreateProject]: Media/CreateProject.png "Creating a new Project"
 [TheCodeIsIn]: Media/TheCodeIsIn.png "The Code Is In"
